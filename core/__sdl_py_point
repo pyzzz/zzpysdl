@@ -1,0 +1,2 @@
+#SDL_Delay -> time.sleep(time)
+#SDL_putenv -> os.putenv(varname, value)

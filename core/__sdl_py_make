@@ -1,0 +1,2 @@
+python ctypesgen.py -L/usr/lib -L/usr/lib64 -lSDL -lSDL_image -lSDL_gfx -lSDL_mixer -lSDL_ttf -I/usr/include/SDL/ /usr/include/SDL/*.h -o sdl.py
+find ./ctypesgen -iname ".svn" | xargs rm -r

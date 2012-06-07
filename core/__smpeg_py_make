@@ -1,0 +1,1 @@
+python ctypesgen.py --cpp="g++ -E" -L/usr/lib -L/usr/lib64 -lsmpeg -lSDL -I/usr/include/SDL/ /usr/include/smpeg/smpeg.h -o smpeg.py
