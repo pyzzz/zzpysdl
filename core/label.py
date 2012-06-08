@@ -16,6 +16,10 @@ class Label(widget.Widget):
 			label,
 			self.color,
 		)
+		if not self.surface: raisesdlerr()
+		
+		#didn't need SDL_DisplayFormatAlpha
+		
 		self.setRect()
 		self.setScreenRect()
 	def __str__(self):

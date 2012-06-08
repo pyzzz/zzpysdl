@@ -7,8 +7,10 @@ import smpeg
 import traceback
 import music
 import movie
+from ctypes import byref
 screen = None
-coreVersion = (0, 1, 0)
+event = sdl.SDL_Event()
+coreVersion = (0, 1, 1)
 sdlVersion = None
 sdlIncludeVersion = None
 ttfVersion = None
@@ -186,6 +188,8 @@ def init(w=800, h=600, bpp=32, title=""):
 		sdl.SDL_SWSURFACE# | sdl.SDL_ASYNCBLIT | sdl.SDL_RESIZABLE
 	)
 	if not screen: raisesdlerr()
+	#sdl.SDL_SetAlpha(screen, sdl.SDL_SRCALPHA, sdl.SDL_ALPHA_TRANSPARENT)
+	#screen = sdl.SDL_DisplayFormatAlpha(screen)
 	
 	logdebug("start SDL_WM_SetCaption", title)
 	sdl.SDL_WM_SetCaption(title, title)
@@ -197,4 +201,13 @@ def lockSurface(surface):
 	return True
 
 def unlockSurface(surface):
-	sdl.SDL_UnlockSurface(surface)
+	if sdl.SDL_MUSTLOCK(surface):
+		sdl.SDL_UnlockSurface(surface)
+
+def pollEvent():
+	#if just pass to function should use ctypes.byref, it's fast than ctypes.pointer
+	return sdl.SDL_PollEvent(byref(event))
+
+def clearEvent():
+	while sdl.SDL_PollEvent(byref(event)):
+		pass

@@ -2,10 +2,9 @@
 # -*- coding:utf-8 -*-
 from core import sdl
 running = True
-event = sdl.SDL_Event()
+screen_changed = True
 font = None
 font_outline = None
-
 img = None
 label = None
 bgm = None

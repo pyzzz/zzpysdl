@@ -23,14 +23,17 @@ def update():
 
 def initTest():
 	img_deltest = image.Image("data/img.png", 0.5)
-	share.img = image.Image("data/img.png", 0.5)
-	share.img.moveScreenRect(xdiff=-200)
+	share.img = image.Image("data/img.png", 1.0)
+	share.img.setScreenRect(0, 0)
+	#share.img.moveScreenRect(xdiff=-500, ydiff=-400)
+	share.img.moveScreenRect(xdiff=-300, ydiff=-500)
+	share.img.moveScreenRect(xdiff=-200, ydiff=100)
 	share.label = label.Label("test", share.font)
 	share.label.moveScreenRect(ydiff=100)
 	noise = music.Music("data/noise.wav")
 	noisec = music.Chunk("data/noise.wav")
 	music.bgm.load(noise)
-	#music.bgm.play(1)
+	#music.bgm.play(0)
 
 def init():
 	initFont()

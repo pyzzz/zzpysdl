@@ -6,9 +6,11 @@ import sdl
 import core
 import smpeg
 import music
+import time
 from ctypes import byref
 info = None
 mpeg = None
+playDelay = 1.0
 
 def playing():
 	if mpeg:
@@ -19,7 +21,7 @@ def playing():
 def stop():
 	global info, mpeg
 	if mpeg:
-		smpeg.SMPEG_stop(mpeg)
+		smpeg.SMPEG_stop(mpeg) #should check playing or not ?
 		smpeg.SMPEG_delete(mpeg)
 	info = None
 	mpeg = None
@@ -27,8 +29,11 @@ def stop():
 def play(path, volume=100):
 	#why not split load and play: smpeg need keep audio device open by itself ...
 	global info, mpeg
+	if playing():
+		core.logdebug("movie play canceled: movie playing")
+		return
 	music.closeAudio()
-	stop()
+	#stop()
 	info = smpeg.SMPEG_Info()
 	mpeg = smpeg.SMPEG_new(path, byref(info), 1)
 	error = smpeg.SMPEG_error(mpeg)
@@ -43,3 +48,6 @@ def play(path, volume=100):
 	smpeg.SMPEG_move(mpeg, 0, 0)
 	smpeg.SMPEG_scaleXY(mpeg, core.screen.contents.w, core.screen.contents.h)
 	smpeg.SMPEG_play(mpeg)
+	#event queue will broken if stop before play start
+	time.sleep(playDelay)
+	core.clearEvent()

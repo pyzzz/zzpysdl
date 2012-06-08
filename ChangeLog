@@ -1,0 +1,10 @@
+0.1.1:
+	image: increase draw performance by SDL_DisplayFormatAlpha
+	image: zoomSurface -> rotozoomSurface
+	movie: fix event queue broken bug
+	core: move event to core, add core.pollEvent(), core.clearEvent()
+	widget: fix rect calc error
+
+0.1.0:
+	basic image, text widget
+	basic music and movie play function

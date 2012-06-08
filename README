@@ -18,16 +18,16 @@ core:
 	core/
 resource:
 	data/
-	You *need* put img.png, msgothic.ttc, noise.wav, test.mpg
+	You *need* create data/ and
+	put img.png, msgothic.ttc, noise.wav, test.mpg
 	under this directory before run example
 
 example keyboard shortcut:
 	esc: exit
-	s: play movie
-	d: stop movie
-	q: play music
-	w: stop music
+	s, d: play, stop movie
+	q, w: play, stop music
 	z: list music and movie info
+	arrow keys: move image
 
 how to use:
 	You need look example,
