@@ -150,6 +150,9 @@ def initVersionInfo():
 		)
 	)
 
+screenVideoMode = sdl.SDL_HWSURFACE | sdl.SDL_DOUBLEBUF
+#screenVideoMode = sdl.SDL_SWSURFACE
+#screenVideoMode |= sdl.SDL_FULLSCREEN
 def init(w=800, h=600, bpp=32, title=""):
 	initVersionInfo()
 	os.putenv("SDL_VIDEO_WINDOW_POS", "center")
@@ -183,10 +186,7 @@ def init(w=800, h=600, bpp=32, title=""):
 	
 	logdebug("start SDL_SetVideoMode", w, h, bpp, "SWSURFACE")
 	global screen
-	screen = sdl.SDL_SetVideoMode(
-		w, h, bpp,
-		sdl.SDL_SWSURFACE# | sdl.SDL_ASYNCBLIT | sdl.SDL_RESIZABLE
-	)
+	screen = sdl.SDL_SetVideoMode(w, h, bpp, screenVideoMode)
 	if not screen: raisesdlerr()
 	#sdl.SDL_SetAlpha(screen, sdl.SDL_SRCALPHA, sdl.SDL_ALPHA_TRANSPARENT)
 	#screen = sdl.SDL_DisplayFormatAlpha(screen)

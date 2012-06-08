@@ -1,3 +1,6 @@
+next:
+	core: allow set core.screenVideoMode before call core.init()
+
 0.1.1:
 	image: increase draw performance by SDL_DisplayFormatAlpha
 	image: zoomSurface -> rotozoomSurface

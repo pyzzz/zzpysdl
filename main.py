@@ -26,8 +26,8 @@ def drawScreen():
 		share.img.draw()
 		share.label.draw()
 		share.screen_changed = False
-	sdl.SDL_Flip(core.screen)
 	core.unlockSurface(core.screen)
+	sdl.SDL_Flip(core.screen) #should not be called while screen is locked ?
 
 def mainLoop():
 	updateScreen()
