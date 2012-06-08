@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 import sdl
 import widget
+import core
 
 class Image(widget.Widget):
 	def __init__(self, path, scale=1.0):
@@ -28,3 +29,23 @@ class Image(widget.Widget):
 	
 	def __str__(self):
 		return "%s[%s]"%(repr(self), self.path)
+
+class SubImage(widget.Widget):
+	def __init__(self, master):
+		if not isinstance(master, Image):
+			raise Exception("not isinstance(master, Image) %s"%master)
+		widget.Widget.__init__(self)
+		self.master = master #reference count += 1
+		self.surface = self.master.surface
+		self.setRect()
+		self.setScreenRect()
+	
+	def __del__(self):
+		"""replace Widget.__del__
+		won't call SDL_FreeSurface
+		master reference count -= 1
+		"""
+		core.logdebug("del widget without SDL_FreeSurface", self)
+	
+	def __str__(self):
+		return "%s[%s]"%(repr(self), self.master)

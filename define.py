@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 windowWidth = 1024
 windowHeight = 768
-windowBpp = 32
+windowBpp = 0
 windowTitle = "pysdl"
 defaultBackGround = 0xFFFFFF
 fontPath = "data/msgothic.ttc"

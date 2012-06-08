@@ -10,7 +10,8 @@ import movie
 from ctypes import byref
 screen = None
 event = sdl.SDL_Event()
-coreVersion = (0, 1, 1)
+screenVideoMode = sdl.SDL_HWSURFACE | sdl.SDL_DOUBLEBUF
+coreVersion = (0, 1, 2)
 sdlVersion = None
 sdlIncludeVersion = None
 ttfVersion = None
@@ -150,10 +151,33 @@ def initVersionInfo():
 		)
 	)
 
-screenVideoMode = sdl.SDL_HWSURFACE | sdl.SDL_DOUBLEBUF
-#screenVideoMode = sdl.SDL_SWSURFACE
-#screenVideoMode |= sdl.SDL_FULLSCREEN
-def init(w=800, h=600, bpp=32, title=""):
+def getScreenVideoModeString():
+	mode = list(filter(
+		lambda key: (screenVideoMode & getattr(sdl, key)), (
+			#"SDL_SWSURFACE",
+			"SDL_HWSURFACE",
+			"SDL_ASYNCBLIT",
+			"SDL_ANYFORMAT",
+			"SDL_HWPALETTE",
+			"SDL_DOUBLEBUF",
+			"SDL_FULLSCREEN",
+			"SDL_OPENGL",
+			"SDL_OPENGLBLIT",
+			"SDL_RESIZABLE",
+			"SDL_NOFRAME",
+			"SDL_HWACCEL",
+			"SDL_SRCCOLORKEY",
+			"SDL_RLEACCELOK",
+			"SDL_RLEACCEL",
+			"SDL_SRCALPHA",
+			"SDL_PREALLOC",
+		)
+	))
+	if not (screenVideoMode & sdl.SDL_HWSURFACE):
+		mode.insert(0, "SDL_SWSURFACE")
+	return mode
+
+def init(w=0, h=0, bpp=0, title=""):
 	initVersionInfo()
 	os.putenv("SDL_VIDEO_WINDOW_POS", "center")
 	os.putenv("SDL_VIDEO_CENTERED", "1")
@@ -161,8 +185,8 @@ def init(w=800, h=600, bpp=32, title=""):
 	logdebug("start SDL_Init EVERYTHING")
 	if sdl.SDL_Init(sdl.SDL_INIT_EVERYTHING) < 0: raisesdlerr()
 	
-	#logdebug("start SDL_EnableUNICODE")
-	#sdl.SDL_EnableUNICODE(1)
+	logdebug("start SDL_EnableUNICODE")
+	sdl.SDL_EnableUNICODE(1)
 	
 	logdebug("start TTF_Init")
 	if sdl.TTF_Init() < 0: raisesdlerr()
@@ -184,12 +208,10 @@ def init(w=800, h=600, bpp=32, title=""):
 	#sdl.Mix_ChannelFinished(music._channelDoneType(music._channelDone))
 	#sdl.Mix_HookMusicFinished(music._bgmDoneType(music._bgmDone))
 	
-	logdebug("start SDL_SetVideoMode", w, h, bpp, "SWSURFACE")
+	logdebug("start SDL_SetVideoMode", w, h, bpp, ", ".join(getScreenVideoModeString()))
 	global screen
 	screen = sdl.SDL_SetVideoMode(w, h, bpp, screenVideoMode)
 	if not screen: raisesdlerr()
-	#sdl.SDL_SetAlpha(screen, sdl.SDL_SRCALPHA, sdl.SDL_ALPHA_TRANSPARENT)
-	#screen = sdl.SDL_DisplayFormatAlpha(screen)
 	
 	logdebug("start SDL_WM_SetCaption", title)
 	sdl.SDL_WM_SetCaption(title, title)

@@ -1,5 +1,11 @@
-next:
+0.1.2:
 	core: allow set core.screenVideoMode before call core.init()
+	core: add core.getScreenVideoModeString(), return list
+	core: change core.init() default w, h, bpp to 0 (
+		if bpp not equal current display bits updaterect will very slow,
+		make 0 can set the best value)
+	image: add class SubImage(self, master)
+	label: add setLabel(self, label, font, r=0, g=0, b=0)
 
 0.1.1:
 	image: increase draw performance by SDL_DisplayFormatAlpha

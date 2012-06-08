@@ -38,6 +38,12 @@ class Widget:
 			self.rect.y += abs(self.screen_rect.y)
 			self.screen_rect.y = 0
 	
+	def _resetSize(self):
+		#call when surface changed
+		self._rect.w = int(self.surface.contents.w)
+		self._rect.h = int(self.surface.contents.h)
+		self._setupRect()
+	
 	def setRect(self, x=0, y=0, w=None, h=None):
 		self._rect.x = int(x)
 		self._screen_rect.y = int(y)

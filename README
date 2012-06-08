@@ -1,6 +1,9 @@
-A python SDL warpper.
-It base on ctypesgen, but Segmentation fault so crazy that
-I must write a wapper to make it more stable ...
+A python SDL warpper and example code, sdl.py and smpeg.py are generate by ctypesgen.
+It should be:
+	NO segmentation fault
+	NO memory leak
+	NO double free
+	Stable and acceptable performance
 
 Passed test on rhel and winxp, all function work.
 rhel need build SDL_ttf 2.0.10+ and smpeg byself.
@@ -16,6 +19,7 @@ example:
 	main.py, define.py, ...
 core:
 	core/
+	It also can use be an example how to run sdl with python
 resource:
 	data/
 	You *need* create data/ and

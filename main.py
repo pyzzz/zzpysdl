@@ -68,6 +68,10 @@ def mainLoop():
 
 if __name__ == "__main__":
 	try:
+		#switch work dir to script dir
+		os.chdir(os.path.dirname(os.path.abspath(sys.argv[0])))
+		#core.screenVideoMode = sdl.SDL_SWSURFACE
+		#core.screenVideoMode |= sdl.SDL_FULLSCREEN
 		core.init(
 			define.windowWidth,
 			define.windowHeight,
