@@ -24,21 +24,27 @@ class Image(widget.Widget):
 			self.surface = rotozoomSurface(surface_displayformat, scale, scale, 1)
 			SDL_FreeSurface(surface_displayformat)
 		
+		#resetSize are for getSize
+		self.resetSize()
 		self.setRect()
-		self.setScreenRectCenter()
+		self.setScreenRect(0, 0)
 	
 	def __str__(self):
 		return "%s[%s]"%(repr(self), self.path)
 
 class SubImage(widget.Widget):
-	def __init__(self, master):
+	def __init__(self, master, x=0, y=0, w=None, h=None):
 		if not isinstance(master, Image):
 			raise Exception("not isinstance(master, Image) %s"%master)
 		widget.Widget.__init__(self)
 		self.master = master #reference count += 1
 		self.surface = self.master.surface
-		self.setRect()
-		self.setScreenRectCenter()
+		if (w == None and h == None):
+			self.resetSize()
+		else:
+			self.setSize(w, h)
+		self.setRect(x, y)
+		self.setScreenRect()
 	
 	def __del__(self):
 		"""replace Widget.__del__

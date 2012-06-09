@@ -12,7 +12,7 @@ SDL_gfx.dll maybe need search or build byself,
 libstdc++-6.dll and libgcc_s_dw2-1.dll are provide by mingw ).
 
 require: SDL_image, SDL_mixer, SDL_gfx, SDL_ttf, smpeg
-provide: basic image and text widget, music and movie support.
+provide: core, widget, image, label, animation, music, movie
 
 files detail:
 example:
@@ -23,13 +23,14 @@ core:
 resource:
 	data/
 	You *need* create data/ and
-	put img.png, msgothic.ttc, noise.wav, test.mpg
+	put img.png, anime.png, msgothic.ttc, noise.wav, test.mpg
 	under this directory before run example
 
 example keyboard shortcut:
 	esc: exit
 	s, d: play, stop movie
 	q, w: play, stop music
+	c, v: play, stop animation
 	z: list music and movie info
 	arrow keys: move image
 

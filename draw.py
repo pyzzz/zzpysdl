@@ -14,16 +14,22 @@ import define
 def updateScreen():
 	share.screen_changed = True
 
+def checkAnimation():
+	if share.anime.needDraw():
+		share.screen_changed = True
+
 def drawScreen():
 	if movie.playing():
 		time.sleep(define.playingDelay)
 		return
 	if not core.lockSurface(core.screen):
 		return
+	checkAnimation()
 	if share.screen_changed:
 		SDL_FillRect(core.screen, None, define.defaultBackGround)
 		share.img.draw()
 		share.label.draw()
+		share.anime.draw()
 		share.screen_changed = False
 	core.unlockSurface(core.screen)
 	SDL_Flip(core.screen) #should not be called while screen is locked ?

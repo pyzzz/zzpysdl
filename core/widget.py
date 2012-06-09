@@ -39,17 +39,20 @@ class Widget:
 			self.rect.y += abs(self.screen_rect.y)
 			self.screen_rect.y = 0
 	
-	def _resetSize(self):
-		#call when surface changed
+	def resetSize(self):
+		#call when surface changed, don't call in SubImage
 		self._rect.w = int(self.surface.contents.w)
 		self._rect.h = int(self.surface.contents.h)
 		self._setupRect()
 	
-	def setRect(self, x=0, y=0, w=None, h=None):
-		self._rect.x = int(x)
-		self._screen_rect.y = int(y)
-		self._rect.w = (w == None) and int(self.surface.contents.w) or int(w)
-		self._rect.h = (h == None) and int(self.surface.contents.h) or int(h)
+	def setSize(self, w=None, h=None):
+		if w != None: self._rect.w = int(w)
+		if h != None: self._rect.h = int(h)
+		self._setupRect()
+	
+	def setRect(self, x=None, y=None):
+		if x != None: self._rect.x = int(x)
+		if y != None: self._rect.y = int(y)
 		self._setupRect()
 	
 	def setScreenRect(self, x=None, y=None):
@@ -58,18 +61,16 @@ class Widget:
 		self._setupRect()
 	
 	def setScreenRectCenter(self, x=None, y=None):
-		self._screen_rect.x = (
-			(x == None) and
-			int((core.screen.contents.w - self.surface.contents.w)/2) or int(x)
-		)
-		self._screen_rect.y = (
-			(y == None) and
-			int((core.screen.contents.h - self.surface.contents.h)/2) or int(y)
-		)
+		w, h = self.getSize()
+		self._screen_rect.x = int((x == None) and (core.screen_w - w)/2 or x)
+		self._screen_rect.y = int((y == None) and (core.screen_h - h)/2 or y)
 		self._setupRect()
 	
 	def getRect(self):
-		return (self._rect.x, self._rect.y, self._rect.w, self._rect.h)
+		return (self._rect.x, self._rect.y)
+	
+	def getSize(self):
+		return (self._rect.w, self._rect.h)
 	
 	def getScreenRect(self):
 		return (self._screen_rect.x, self._screen_rect.y)

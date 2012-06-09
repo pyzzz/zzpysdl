@@ -20,9 +20,9 @@ class Label(widget.Widget):
 		if not self.surface: core.raisesdlerr()
 		
 		#didn't need SDL_DisplayFormatAlpha
-		
+		self.resetSize()
 		self.setRect()
-		self.setScreenRectCenter()
+		self.setScreenRect(0, 0)
 	
 	def __str__(self):
 		return "%s[%s]"%(repr(self), self.label)
@@ -42,4 +42,4 @@ class Label(widget.Widget):
 		self.color = color
 		self.surface = surface_next
 		SDL_FreeSurface(surface_prev)
-		self._resetSize()
+		self.resetSize()

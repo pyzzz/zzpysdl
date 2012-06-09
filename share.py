@@ -9,3 +9,5 @@ img = None
 label = None
 bgm = None
 music = [None]*8
+anime_img = None
+anime = None

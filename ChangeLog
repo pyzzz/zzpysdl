@@ -1,3 +1,11 @@
+0.1.4:
+	animation: add Animation(delay, widget_list)
+	image/label: change default rect to 0, 0 (before are center)
+	widget: split setRect to setRect, setSize and resetRize
+	widget: getRect return (x, y) (before are (x, y, w, h))
+	widget: add getSize to return (w, h)
+	core: add core.screen_w, core.screen_h
+
 0.1.3:
 	widget: move old setScreenRect to setScreenRectCenter
 	widget: setScreenRect will not set default value to center now

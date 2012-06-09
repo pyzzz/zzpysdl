@@ -11,9 +11,11 @@ from ctypes import byref
 from sdl import SDL_MUSTLOCK, SDL_LockSurface, SDL_UnlockSurface
 from sdl import SDL_PollEvent, SDL_GetError
 screen = None
+screen_w = None
+screen_h = None
 event = sdl.SDL_Event()
 screenVideoMode = sdl.SDL_HWSURFACE | sdl.SDL_DOUBLEBUF
-coreVersion = (0, 1, 3)
+coreVersion = (0, 1, 4)
 sdlVersion = None
 sdlIncludeVersion = None
 ttfVersion = None
@@ -214,6 +216,9 @@ def init(w=0, h=0, bpp=0, title=""):
 	global screen
 	screen = sdl.SDL_SetVideoMode(w, h, bpp, screenVideoMode)
 	if not screen: raisesdlerr()
+	global screen_w, screen_h
+	screen_w = w
+	screen_h = h
 	
 	logdebug("start SDL_WM_SetCaption", title)
 	sdl.SDL_WM_SetCaption(title, title)

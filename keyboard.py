@@ -3,7 +3,7 @@
 import sys
 import os
 import time
-from core import sdl
+#from core import sdl
 from core import image
 from core import core
 from core import music
@@ -15,6 +15,7 @@ key = {}
 ns = globals()
 #why not use SDLK_{name}: search member in namespace sdl will spend more time
 #need split keypress{name} to keydown_{name} and keypress_{name} ?
+#need SDL_GetKeyState ?
 keyList = (
 	"escape",
 	"s",
@@ -22,6 +23,8 @@ keyList = (
 	"q",
 	"w",
 	"z",
+	"c",
+	"v",
 	"left",
 	"up",
 	"right",
@@ -60,11 +63,20 @@ def keyup_z():
 	#test keyup
 	core.logdebug("keyup_z")
 
+def keypress_c():
+	share.anime.play()
+	keyup("c")
+
+def keypress_v():
+	share.anime.stop()
+	draw.updateScreen()
+	keyup("v")
+
 def keypress_left():
 	if pressed("up"): keypress_up(True)
 	elif pressed("down"): keypress_down(True)
 	x, y = share.img.getScreenRect()
-	ix, iy, iw, ih = share.img.getRect()
+	iw, ih = share.img.getSize()
 	maxx = max(0, define.windowWidth-iw)
 	if x == maxx:
 		return
@@ -78,7 +90,7 @@ def keypress_left():
 def keypress_up(slash=False):
 	if not slash and (pressed("left") or pressed("right")): return
 	x, y = share.img.getScreenRect()
-	ix, iy, iw, ih = share.img.getRect()
+	iw, ih = share.img.getSize()
 	maxy = max(0, define.windowHeight-ih)
 	if y == maxy:
 		return
@@ -94,7 +106,7 @@ def keypress_right():
 	if pressed("up"): keypress_up(True)
 	elif pressed("down"): keypress_down(True)
 	x, y = share.img.getScreenRect()
-	ix, iy, iw, ih = share.img.getRect()
+	iw, ih = share.img.getSize()
 	minx = min(0, define.windowWidth-iw)
 	if x == minx:
 		return
@@ -109,7 +121,7 @@ def keypress_down(slash=False):
 	if pressed("up"): return
 	if not slash and (pressed("left") or pressed("right")): return
 	x, y = share.img.getScreenRect()
-	ix, iy, iw, ih = share.img.getRect()
+	iw, ih = share.img.getSize()
 	miny = min(0, define.windowHeight-ih)
 	if y == miny:
 		return
