@@ -1,4 +1,4 @@
-A python SDL warpper and example code, sdl.py and smpeg.py are generate by ctypesgen.
+A python SDL wrapper and example code, sdl.py and smpeg.py are generate by ctypesgen.
 It should be:
 	NO segmentation fault
 	NO memory leak
