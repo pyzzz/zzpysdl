@@ -2,11 +2,17 @@
 # -*- coding:utf-8 -*-
 import sys
 import os
-#import ctypes
-import sdl
 import core
 import movie
-channel = [None]*sdl.MIX_CHANNELS
+from sdl import MIX_CHANNELS
+from sdl import MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS
+from sdl import Mix_OpenAudio, Mix_HaltMusic, Mix_HaltChannel, Mix_CloseAudio
+from sdl import Mix_LoadMUS, Mix_FreeMusic, Mix_LoadWAV, Mix_FreeChunk
+from sdl import Mix_Playing, Mix_PlayingMusic, Mix_Paused, Mix_PausedMusic
+from sdl import Mix_Pause, Mix_Resume, Mix_PlayChannel,Mix_FadeOutChannel
+from sdl import Mix_PauseMusic, Mix_ResumeMusic, Mix_RewindMusic
+from sdl import Mix_PlayMusic, Mix_FadeOutMusic
+channel = [None]*MIX_CHANNELS
 bgm = None
 audioDeviceActive = False
 #Segmentation fault if set both ...
@@ -28,10 +34,10 @@ def openAudio():
 	if audioDeviceActive:
 		return
 	movie.stop() #if not call it, Mix_OpenAudio will failed after movie playing finish
-	if sdl.Mix_OpenAudio(
-		sdl.MIX_DEFAULT_FREQUENCY,
-		sdl.MIX_DEFAULT_FORMAT,
-		sdl.MIX_DEFAULT_CHANNELS,
+	if Mix_OpenAudio(
+		MIX_DEFAULT_FREQUENCY,
+		MIX_DEFAULT_FORMAT,
+		MIX_DEFAULT_CHANNELS,
 		1024,
 	) < 0: core.raisesdlerr()
 	audioDeviceActive = True
@@ -40,21 +46,21 @@ def closeAudio():
 	global audioDeviceActive
 	if not audioDeviceActive:
 		return
-	sdl.Mix_HaltMusic()
-	sdl.Mix_HaltChannel(-1) #stop all channel
-	sdl.Mix_CloseAudio()
+	Mix_HaltMusic()
+	Mix_HaltChannel(-1) #stop all channel
+	Mix_CloseAudio()
 	audioDeviceActive = False
 
 class Music:
 	def __init__(self, path):
 		self.path = path
-		self.data = sdl.Mix_LoadMUS(path)
+		self.data = Mix_LoadMUS(path)
 		if not self.data:
 			core.logsdlerr(self)
 	
 	def __del__(self):
 		core.logdebug("del music", self)
-		sdl.Mix_FreeMusic(self.data)
+		Mix_FreeMusic(self.data)
 	
 	def __str__(self):
 		return "%s[%s]"%(repr(self), self.path)
@@ -62,21 +68,21 @@ class Music:
 class Chunk:
 	def __init__(self, path):
 		self.path = path
-		self.data = sdl.Mix_LoadWAV(path)
+		self.data = Mix_LoadWAV(path)
 		if not self.data:
 			core.logsdlerr(self)
 	
 	def __del__(self):
 		core.logdebug("del chunk", self)
-		sdl.Mix_FreeChunk(self.data)
+		Mix_FreeChunk(self.data)
 	
 	def __str__(self):
 		return "%s[%s]"%(repr(self), self.path)
 
 class _ChannelCore:
 	def __init__(self, channel):
-		if channel < 0 or channel >= sdl.MIX_CHANNELS:
-			raise Exception("channel must in range [0..%s]"%sdl.MIX_CHANNELS)
+		if channel < 0 or channel >= MIX_CHANNELS:
+			raise Exception("channel must in range [0..%s]"%MIX_CHANNELS)
 		self.channel = channel
 		self.chunk = None
 	
@@ -88,7 +94,7 @@ class _ChannelCore:
 	def paused(self):
 		#Does not check if the channel has been halted after it was paused
 		#Zero if the channel is not paused
-		if sdl.Mix_Paused(self.channel) == 0:
+		if Mix_Paused(self.channel) == 0:
 			return False
 		return True
 	
@@ -100,7 +106,7 @@ class _ChannelCore:
 			return False
 		#Does not check if the channel has been paused
 		#Zero if the channel is not playing
-		if sdl.Mix_Playing(self.channel) == 0:
+		if Mix_Playing(self.channel) == 0:
 			return False
 		return True
 	
@@ -123,7 +129,7 @@ class _ChannelCore:
 			core.logdebug("play canceled: movie playing", self)
 			return
 		openAudio()
-		if sdl.Mix_PlayChannel(self.channel, self.chunk.data, loop) < 0:
+		if Mix_PlayChannel(self.channel, self.chunk.data, loop) < 0:
 			core.logsdlerr(self)
 			return
 	
@@ -136,15 +142,15 @@ class _ChannelCore:
 		if not self.playing():
 			return
 		if fadeout_ms:
-			sdl.Mix_FadeOutChannel(self.channel, fadeout_ms)
+			Mix_FadeOutChannel(self.channel, fadeout_ms)
 		else:
-			sdl.Mix_HaltChannel(self.channel)
+			Mix_HaltChannel(self.channel)
 	
 	def pause(self):
-		sdl.Mix_Pause(self.channel)
+		Mix_Pause(self.channel)
 	
 	def unpause(self):
-		sdl.Mix_Resume(self.channel)
+		Mix_Resume(self.channel)
 
 class _MusicCore:
 	def __init__(self):
@@ -156,7 +162,7 @@ class _MusicCore:
 	def paused(self):
 		#Does not check if the channel has been halted after it was paused
 		#Zero if the channel is not paused
-		if sdl.Mix_PausedMusic() == 0:
+		if Mix_PausedMusic() == 0:
 			return False
 		return True
 	
@@ -168,7 +174,7 @@ class _MusicCore:
 			return False
 		#Does not check if the channel has been paused
 		#Zero if the channel is not playing
-		if sdl.Mix_PlayingMusic() == 0:
+		if Mix_PlayingMusic() == 0:
 			return False
 		return True
 	
@@ -191,7 +197,7 @@ class _MusicCore:
 			core.logdebug("play canceled: movie playing", self)
 			return
 		openAudio()
-		if sdl.Mix_PlayMusic(self.music.data, loop) < 0:
+		if Mix_PlayMusic(self.music.data, loop) < 0:
 			core.logsdlerr(self)
 			return
 	
@@ -199,15 +205,15 @@ class _MusicCore:
 		if not self.playing():
 			return
 		if fadeout_ms:
-			sdl.Mix_FadeOutMusic(fadeout_ms)
+			Mix_FadeOutMusic(fadeout_ms)
 		else:
-			sdl.Mix_HaltMusic()
+			Mix_HaltMusic()
 	
 	def pause(self):
-		sdl.Mix_PauseMusic()
+		Mix_PauseMusic()
 	
 	def unpause(self):
-		sdl.Mix_ResumeMusic()
+		Mix_ResumeMusic()
 	
 	def restart(self):
-		sdl.Mix_RewindMusic()
+		Mix_RewindMusic()

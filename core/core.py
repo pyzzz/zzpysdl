@@ -8,10 +8,12 @@ import traceback
 import music
 import movie
 from ctypes import byref
+from sdl import SDL_MUSTLOCK, SDL_LockSurface, SDL_UnlockSurface
+from sdl import SDL_PollEvent, SDL_GetError
 screen = None
 event = sdl.SDL_Event()
 screenVideoMode = sdl.SDL_HWSURFACE | sdl.SDL_DOUBLEBUF
-coreVersion = (0, 1, 2)
+coreVersion = (0, 1, 3)
 sdlVersion = None
 sdlIncludeVersion = None
 ttfVersion = None
@@ -40,13 +42,13 @@ def logtraceerr(*args):
 def raisesdlerr(*args):
 	raise Exception(
 		" ".join((
-			str(sdl.SDL_GetError()),
+			str(SDL_GetError()),
 			" ".join(map(str, args)),
 		))
 	)
 
 def logsdlerr(*args):
-	logerr(sdl.SDL_GetError(), *args)
+	logerr(SDL_GetError(), *args)
 
 def exitproc():
 	log("exitproc", os.name)
@@ -185,8 +187,8 @@ def init(w=0, h=0, bpp=0, title=""):
 	logdebug("start SDL_Init EVERYTHING")
 	if sdl.SDL_Init(sdl.SDL_INIT_EVERYTHING) < 0: raisesdlerr()
 	
-	logdebug("start SDL_EnableUNICODE")
-	sdl.SDL_EnableUNICODE(1)
+	#comment out because slow down SDL_pollEvent and doesn't need in python
+	#sdl.SDL_EnableUNICODE(1)
 	
 	logdebug("start TTF_Init")
 	if sdl.TTF_Init() < 0: raisesdlerr()
@@ -217,19 +219,22 @@ def init(w=0, h=0, bpp=0, title=""):
 	sdl.SDL_WM_SetCaption(title, title)
 
 def lockSurface(surface):
-	if sdl.SDL_MUSTLOCK(surface):
-		if sdl.SDL_LockSurface(surface) < 0:
+	if SDL_MUSTLOCK(surface):
+		if SDL_LockSurface(surface) < 0:
 			return False
 	return True
 
 def unlockSurface(surface):
-	if sdl.SDL_MUSTLOCK(surface):
-		sdl.SDL_UnlockSurface(surface)
+	if SDL_MUSTLOCK(surface):
+		SDL_UnlockSurface(surface)
 
 def pollEvent():
 	#if just pass to function should use ctypes.byref, it's fast than ctypes.pointer
-	return sdl.SDL_PollEvent(byref(event))
+	return SDL_PollEvent(byref(event))
 
 def clearEvent():
-	while sdl.SDL_PollEvent(byref(event)):
+	"""use with caution
+	*should keyup all key after clear event
+	"""
+	while SDL_PollEvent(byref(event)):
 		pass

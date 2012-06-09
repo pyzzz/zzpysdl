@@ -2,25 +2,26 @@
 # -*- coding:utf-8 -*-
 import sys
 import os
-import sdl
 import core
 #import threading
 from ctypes import byref
+#reduce search time (about 50%)
+from sdl import SDL_BlitSurface, SDL_Rect, SDL_FreeSurface
 
 class Widget:
 	def __init__(self):
 		self.surface = None
 		#allow minus value
-		self._rect = sdl.SDL_Rect()
-		self._screen_rect = sdl.SDL_Rect()
+		self._rect = SDL_Rect()
+		self._screen_rect = SDL_Rect()
 		#convert _rect, _screen_rect to rect, screen_rect, repair minus value
-		self.rect = sdl.SDL_Rect()
-		self.screen_rect = sdl.SDL_Rect()
+		self.rect = SDL_Rect()
+		self.screen_rect = SDL_Rect()
 		#self.lock = threading.RLock() #include thread safe but performance decrease ?
 	
 	def __del__(self):
 		core.logdebug("del widget", self)
-		sdl.SDL_FreeSurface(self.surface)
+		SDL_FreeSurface(self.surface)
 	
 	def _setupRect(self):
 		self.rect.x = self._rect.x
@@ -84,7 +85,7 @@ class Widget:
 		self._setupRect()
 	
 	def draw(self):
-		sdl.SDL_BlitSurface(
+		SDL_BlitSurface(
 			self.surface, byref(self.rect),
 			core.screen, byref(self.screen_rect),
 		)

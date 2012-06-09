@@ -1,6 +1,10 @@
-next:
+0.1.3:
 	widget: move old setScreenRect to setScreenRectCenter
 	widget: setScreenRect will not set default value to center now
+	core/widget/image/label: use some global name import from sdl to reduce
+		search time (sdl.__dict__ have about 4700 object)
+	image/label: fix raisesdlerr error
+	core: disable SDL_EnableUNICODE because slow down SDL_pollEvent
 
 0.1.2:
 	core: allow set core.screenVideoMode before call core.init()

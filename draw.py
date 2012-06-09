@@ -5,8 +5,9 @@ import os
 import traceback
 import time
 from core import core
-from core import sdl
+#from core import sdl
 from core import movie
+from core.sdl import SDL_FillRect, SDL_Flip
 import share
 import define
 
@@ -20,9 +21,9 @@ def drawScreen():
 	if not core.lockSurface(core.screen):
 		return
 	if share.screen_changed:
-		sdl.SDL_FillRect(core.screen, None, define.defaultBackGround)
+		SDL_FillRect(core.screen, None, define.defaultBackGround)
 		share.img.draw()
 		share.label.draw()
 		share.screen_changed = False
 	core.unlockSurface(core.screen)
-	sdl.SDL_Flip(core.screen) #should not be called while screen is locked ?
+	SDL_Flip(core.screen) #should not be called while screen is locked ?

@@ -5,9 +5,11 @@ import os
 import traceback
 import time
 from core import core
-from core import sdl
+#from core import sdl
 from core import music
 from core import movie
+from core.sdl import SDL_QUIT, SDL_KEYDOWN, SDL_KEYUP
+from core.sdl import SDL_GetKeyName
 import init
 import share
 import define
@@ -29,14 +31,14 @@ def mainLoop():
 		keyboard.procKeypress()
 		while core.pollEvent():
 			evtype = core.event.type
-			if evtype == sdl.SDL_QUIT:
+			if evtype == SDL_QUIT:
 				core.log("SDL_QUIT event")
 				share.running = False
-			elif evtype == sdl.SDL_KEYDOWN:
+			elif evtype == SDL_KEYDOWN:
 				#str(core.sdl.String)
-				keyboard.keydown(str(sdl.SDL_GetKeyName(core.event.key.keysym.sym)))
-			elif evtype == sdl.SDL_KEYUP:
-				keyboard.keyup(str(sdl.SDL_GetKeyName(core.event.key.keysym.sym)))
+				keyboard.keydown(str(SDL_GetKeyName(core.event.key.keysym.sym)))
+			elif evtype == SDL_KEYUP:
+				keyboard.keyup(str(SDL_GetKeyName(core.event.key.keysym.sym)))
 
 if __name__ == "__main__":
 	try:
