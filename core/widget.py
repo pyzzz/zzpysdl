@@ -47,18 +47,23 @@ class Widget:
 	def setRect(self, x=0, y=0, w=None, h=None):
 		self._rect.x = int(x)
 		self._screen_rect.y = int(y)
-		self._rect.w = (w == None) and int(self.surface.contents.w) or w
-		self._rect.h = (h == None) and int(self.surface.contents.h) or h
+		self._rect.w = (w == None) and int(self.surface.contents.w) or int(w)
+		self._rect.h = (h == None) and int(self.surface.contents.h) or int(h)
 		self._setupRect()
 	
 	def setScreenRect(self, x=None, y=None):
+		if x != None: self._screen_rect.x = int(x)
+		if y != None: self._screen_rect.y = int(y)
+		self._setupRect()
+	
+	def setScreenRectCenter(self, x=None, y=None):
 		self._screen_rect.x = (
 			(x == None) and
-			int((core.screen.contents.w - self.surface.contents.w)/2) or x
+			int((core.screen.contents.w - self.surface.contents.w)/2) or int(x)
 		)
 		self._screen_rect.y = (
 			(y == None) and
-			int((core.screen.contents.h - self.surface.contents.h)/2) or y
+			int((core.screen.contents.h - self.surface.contents.h)/2) or int(y)
 		)
 		self._setupRect()
 	

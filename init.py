@@ -30,8 +30,7 @@ def initTest():
 	share.img.moveScreenRect(xdiff=-200, ydiff=100)
 	share.label = label.Label("test", share.font)
 	share.label.moveScreenRect(ydiff=100)
-	for i in xrange(1000):
-		share.label.setLabel("test setLabel", share.font)
+	share.label.setLabel("test setLabel", share.font)
 	noise = music.Music("data/noise.wav")
 	noisec = music.Chunk("data/noise.wav")
 	music.bgm.load(noise)

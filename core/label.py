@@ -21,7 +21,7 @@ class Label(widget.Widget):
 		#didn't need SDL_DisplayFormatAlpha
 		
 		self.setRect()
-		self.setScreenRect()
+		self.setScreenRectCenter()
 	
 	def __str__(self):
 		return "%s[%s]"%(repr(self), self.label)

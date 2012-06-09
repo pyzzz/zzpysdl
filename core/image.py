@@ -25,7 +25,7 @@ class Image(widget.Widget):
 			sdl.SDL_FreeSurface(surface_displayformat)
 		
 		self.setRect()
-		self.setScreenRect()
+		self.setScreenRectCenter()
 	
 	def __str__(self):
 		return "%s[%s]"%(repr(self), self.path)
@@ -38,7 +38,7 @@ class SubImage(widget.Widget):
 		self.master = master #reference count += 1
 		self.surface = self.master.surface
 		self.setRect()
-		self.setScreenRect()
+		self.setScreenRectCenter()
 	
 	def __del__(self):
 		"""replace Widget.__del__

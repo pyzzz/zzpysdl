@@ -1,3 +1,7 @@
+next:
+	widget: move old setScreenRect to setScreenRectCenter
+	widget: setScreenRect will not set default value to center now
+
 0.1.2:
 	core: allow set core.screenVideoMode before call core.init()
 	core: add core.getScreenVideoModeString(), return list
