@@ -4,10 +4,11 @@ import sys
 import os
 import core
 import movie
+import rw
 from sdl import MIX_CHANNELS
 from sdl import MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS
 from sdl import Mix_OpenAudio, Mix_HaltMusic, Mix_HaltChannel, Mix_CloseAudio
-from sdl import Mix_LoadMUS, Mix_FreeMusic, Mix_LoadWAV, Mix_FreeChunk
+from sdl import Mix_LoadMUS_RW, Mix_FreeMusic, Mix_LoadWAV_RW, Mix_FreeChunk
 from sdl import Mix_Playing, Mix_PlayingMusic, Mix_Paused, Mix_PausedMusic
 from sdl import Mix_Pause, Mix_Resume, Mix_PlayChannel,Mix_FadeOutChannel
 from sdl import Mix_PauseMusic, Mix_ResumeMusic, Mix_RewindMusic
@@ -54,7 +55,8 @@ def closeAudio():
 class Music:
 	def __init__(self, path):
 		self.path = path
-		self.data = Mix_LoadMUS(path)
+		self.rw = rw.RW(path)
+		self.data = Mix_LoadMUS_RW(self.rw.obj)
 		if not self.data:
 			core.logsdlerr(self)
 	
@@ -68,7 +70,8 @@ class Music:
 class Chunk:
 	def __init__(self, path):
 		self.path = path
-		self.data = Mix_LoadWAV(path)
+		self.rw = rw.RW(path)
+		self.data = Mix_LoadWAV_RW(self.rw.obj, 1)
 		if not self.data:
 			core.logsdlerr(self)
 	
@@ -111,15 +114,15 @@ class _ChannelCore:
 		return True
 	
 	def load(self, chunk):
-		if not isinstance(chunk, Chunk):
-			core.logerr("not isinstance(chunk, Chunk)", chunk)
+		if not isinstance(chunk, Chunk) and chunk != None:
+			core.logerr("not isinstance(chunk, Chunk) and != None", chunk)
 			return
 		self.stop()
 		self.chunk = chunk
 	
 	def play(self, loop):
 		"""loop -1: infinite, 0: once"""
-		if not self.chunk:
+		if not self.chunk: #may be None or NULL pointer
 			core.logdebug("play canceled: not self.chunk", self)
 			return
 		if self.playing():
@@ -179,8 +182,8 @@ class _MusicCore:
 		return True
 	
 	def load(self, music):
-		if not isinstance(music, Music):
-			core.logerr("not isinstance(music, Music)", music)
+		if not isinstance(music, Music) and music != None:
+			core.logerr("not isinstance(music, Music) and != None", music)
 			return
 		self.stop()
 		self.music = music

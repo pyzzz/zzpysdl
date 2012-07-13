@@ -53,6 +53,7 @@ if __name__ == "__main__":
 			define.windowTitle,
 		)
 		init.init()
+		keyboard.init()
 		mainLoop()
 	except:
 		core.logtraceerr()

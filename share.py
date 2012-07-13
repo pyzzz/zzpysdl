@@ -4,7 +4,9 @@ from core import sdl
 running = True
 screen_changed = True
 font = None
+font_rw = None
 font_outline = None
+font_outline_rw = None
 img = None
 label = None
 bgm = None

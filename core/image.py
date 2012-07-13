@@ -2,13 +2,15 @@
 # -*- coding:utf-8 -*-
 import widget
 import core
-from sdl import IMG_Load, SDL_DisplayFormatAlpha, SDL_FreeSurface, rotozoomSurface
+import rw
+from sdl import IMG_Load_RW, SDL_DisplayFormatAlpha, SDL_FreeSurface, rotozoomSurface
 
 class Image(widget.Widget):
 	def __init__(self, path, scale=1.0):
 		widget.Widget.__init__(self)
 		self.path = path
-		surface_orig = IMG_Load(path)
+		self.rw = rw.RW(path)
+		surface_orig = IMG_Load_RW(self.rw.obj, 1)
 		if not surface_orig: core.raisesdlerr()
 		
 		#hasalpha = (surface_orig.contents.flags & SDL_SRCALPHA) == SDL_SRCALPHA

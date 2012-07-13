@@ -15,7 +15,7 @@ screen_w = None
 screen_h = None
 event = sdl.SDL_Event()
 screenVideoMode = sdl.SDL_HWSURFACE | sdl.SDL_DOUBLEBUF
-coreVersion = (0, 1, 4)
+coreVersion = (0, 1, 5)
 sdlVersion = None
 sdlIncludeVersion = None
 ttfVersion = None
@@ -28,6 +28,9 @@ mixVersion = None
 mixIncludeVersion = None
 mpgVersion = None
 mpgIncludeVersion = None
+
+class SDLException(Exception):
+	pass
 
 def log(*args):
 	if args: sys.stdout.write("[ Log ] %s\n"%" ".join(map(str, args)))
@@ -42,7 +45,7 @@ def logtraceerr(*args):
 	logerr(traceback.format_exc(), *args)
 
 def raisesdlerr(*args):
-	raise Exception(
+	raise SDLException(
 		" ".join((
 			str(SDL_GetError()),
 			" ".join(map(str, args)),
@@ -243,3 +246,15 @@ def clearEvent():
 	"""
 	while SDL_PollEvent(byref(event)):
 		pass
+
+def getUnicode(s):
+	if type(s) == unicode:
+		return s
+	else:
+		return str(s).decode("utf-8")
+
+def getStr(s):
+	if type(s) == unicode:
+		return s.encode("utf-8")
+	else:
+		return str(s)

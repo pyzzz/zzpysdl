@@ -1,3 +1,12 @@
+0.1.5:
+	core: update SDL_image to 1.2.12, SDL_mixer to 1.2.12
+	example: add test data with not license problem (exclude test.mpg)
+	music/channel: allow load None
+	image/music/chunk/movie: allow load file from zip or other archive
+		example: image.Image("test.zip>test.png")
+		You may need replace rw.getArchiveData to load different type archive
+	core: core.raisesdlerr now raise core.SDLException
+
 0.1.4:
 	animation: add Animation(delay, widget_list)
 	image/label: change default rect to 0, 0 (before are center)

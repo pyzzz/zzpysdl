@@ -16,27 +16,13 @@ ns = globals()
 #why not use SDLK_{name}: search member in namespace sdl will spend more time
 #need split keypress{name} to keydown_{name} and keypress_{name} ?
 #need SDL_GetKeyState ?
-keyList = (
-	"escape",
-	"s",
-	"d",
-	"q",
-	"w",
-	"z",
-	"c",
-	"v",
-	"left",
-	"up",
-	"right",
-	"down",
-)
 
 def keypress_escape():
 	share.running = False
 	keyup("escape")
 
 def keypress_s():
-	movie.play("data/test.mpg")
+	movie.play("data/bin>test.mpg")
 	keyupAll()
 	keyup("s")
 
@@ -51,6 +37,14 @@ def keypress_q():
 def keypress_w():
 	music.bgm.pause()
 	keyup("w")
+
+def keypress_e():
+	music.channel[0].play(0)
+	keyup("e")
+
+def keypress_r():
+	music.channel[0].pause()
+	keyup("r")
 
 def keypress_z():
 	core.logdebug(music.bgm)
@@ -135,8 +129,8 @@ def keypress_down(slash=False):
 class Key:
 	def __init__(self, name):
 		self.name = name
-		self.name_keypress = "keypress_"+self.name
-		self.name_keyup = "keyup_"+self.name
+		self.event_keypress = ns.get("keypress_"+self.name)
+		self.event_keyup = ns.get("keyup_"+self.name)
 		self.lastTime = 0
 		self.pressed = False
 	
@@ -152,13 +146,13 @@ class Key:
 		core.logdebug(self, "up")
 		self.lastTime = 0
 		self.pressed = False
-		event = ns.get(self.name_keyup)
-		if event: event()
+		if self.event_keyup:
+			self.event_keyup()
 	
 	def keypress(self):
 		#core.logdebug(self, "press")
-		event = ns.get(self.name_keypress)
-		if event: event()
+		if self.event_keypress:
+			self.event_keypress()
 	
 	def procKeydown(self):
 		if self.pressed:
@@ -208,5 +202,14 @@ def procKeypress():
 	for n in key.itervalues():
 		n.procKeypress()
 
-for n in keyList:
-	key[n] = Key(n)
+def init():
+	for name, obj in ns.iteritems():
+		if not callable(obj):
+			continue
+		if not (name.startswith("keypress_") or name.startswith("keyup_")):
+			continue
+		keyname = name[name.rfind("_")+1:]
+		if keyname in key:
+			continue
+		key[keyname] = Key(keyname)
+	#core.logdebug(key.keys())

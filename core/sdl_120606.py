@@ -600,6 +600,8 @@ _libs["SDL_ttf"] = load_library("SDL_ttf")
 
 # No modules
 
+NULL = None # <built-in>
+
 __off_t = c_long # /usr/include/bits/types.h: 141
 
 __off64_t = c_long # /usr/include/bits/types.h: 142
@@ -4482,7 +4484,7 @@ if hasattr(_libs['SDL_gfx'], 'SDL_imageFilterRestoreStack'):
     SDL_imageFilterRestoreStack.argtypes = []
     SDL_imageFilterRestoreStack.restype = None
 
-# /usr/include/SDL/SDL_image.h: 56
+# /usr/include/SDL/SDL_image.h: 57
 if hasattr(_libs['SDL_image'], 'IMG_Linked_Version'):
     IMG_Linked_Version = _libs['SDL_image'].IMG_Linked_Version
     IMG_Linked_Version.argtypes = []
@@ -4495,8 +4497,6 @@ IMG_INIT_JPG = 1 # /usr/include/SDL/SDL_image.h: 64
 IMG_INIT_PNG = 2 # /usr/include/SDL/SDL_image.h: 64
 
 IMG_INIT_TIF = 4 # /usr/include/SDL/SDL_image.h: 64
-
-IMG_INIT_WEBP = 8 # /usr/include/SDL/SDL_image.h: 64
 
 IMG_InitFlags = enum_anon_49 # /usr/include/SDL/SDL_image.h: 64
 
@@ -4614,109 +4614,97 @@ if hasattr(_libs['SDL_image'], 'IMG_isXV'):
     IMG_isXV.argtypes = [POINTER(SDL_RWops)]
     IMG_isXV.restype = c_int
 
-# /usr/include/SDL/SDL_image.h: 107
-if hasattr(_libs['SDL_image'], 'IMG_isWEBP'):
-    IMG_isWEBP = _libs['SDL_image'].IMG_isWEBP
-    IMG_isWEBP.argtypes = [POINTER(SDL_RWops)]
-    IMG_isWEBP.restype = c_int
-
-# /usr/include/SDL/SDL_image.h: 110
+# /usr/include/SDL/SDL_image.h: 109
 if hasattr(_libs['SDL_image'], 'IMG_LoadICO_RW'):
     IMG_LoadICO_RW = _libs['SDL_image'].IMG_LoadICO_RW
     IMG_LoadICO_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadICO_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 111
+# /usr/include/SDL/SDL_image.h: 110
 if hasattr(_libs['SDL_image'], 'IMG_LoadCUR_RW'):
     IMG_LoadCUR_RW = _libs['SDL_image'].IMG_LoadCUR_RW
     IMG_LoadCUR_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadCUR_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 112
+# /usr/include/SDL/SDL_image.h: 111
 if hasattr(_libs['SDL_image'], 'IMG_LoadBMP_RW'):
     IMG_LoadBMP_RW = _libs['SDL_image'].IMG_LoadBMP_RW
     IMG_LoadBMP_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadBMP_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 113
+# /usr/include/SDL/SDL_image.h: 112
 if hasattr(_libs['SDL_image'], 'IMG_LoadGIF_RW'):
     IMG_LoadGIF_RW = _libs['SDL_image'].IMG_LoadGIF_RW
     IMG_LoadGIF_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadGIF_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 114
+# /usr/include/SDL/SDL_image.h: 113
 if hasattr(_libs['SDL_image'], 'IMG_LoadJPG_RW'):
     IMG_LoadJPG_RW = _libs['SDL_image'].IMG_LoadJPG_RW
     IMG_LoadJPG_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadJPG_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 115
+# /usr/include/SDL/SDL_image.h: 114
 if hasattr(_libs['SDL_image'], 'IMG_LoadLBM_RW'):
     IMG_LoadLBM_RW = _libs['SDL_image'].IMG_LoadLBM_RW
     IMG_LoadLBM_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadLBM_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 116
+# /usr/include/SDL/SDL_image.h: 115
 if hasattr(_libs['SDL_image'], 'IMG_LoadPCX_RW'):
     IMG_LoadPCX_RW = _libs['SDL_image'].IMG_LoadPCX_RW
     IMG_LoadPCX_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadPCX_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 117
+# /usr/include/SDL/SDL_image.h: 116
 if hasattr(_libs['SDL_image'], 'IMG_LoadPNG_RW'):
     IMG_LoadPNG_RW = _libs['SDL_image'].IMG_LoadPNG_RW
     IMG_LoadPNG_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadPNG_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 118
+# /usr/include/SDL/SDL_image.h: 117
 if hasattr(_libs['SDL_image'], 'IMG_LoadPNM_RW'):
     IMG_LoadPNM_RW = _libs['SDL_image'].IMG_LoadPNM_RW
     IMG_LoadPNM_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadPNM_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 119
+# /usr/include/SDL/SDL_image.h: 118
 if hasattr(_libs['SDL_image'], 'IMG_LoadTGA_RW'):
     IMG_LoadTGA_RW = _libs['SDL_image'].IMG_LoadTGA_RW
     IMG_LoadTGA_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadTGA_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 120
+# /usr/include/SDL/SDL_image.h: 119
 if hasattr(_libs['SDL_image'], 'IMG_LoadTIF_RW'):
     IMG_LoadTIF_RW = _libs['SDL_image'].IMG_LoadTIF_RW
     IMG_LoadTIF_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadTIF_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 121
+# /usr/include/SDL/SDL_image.h: 120
 if hasattr(_libs['SDL_image'], 'IMG_LoadXCF_RW'):
     IMG_LoadXCF_RW = _libs['SDL_image'].IMG_LoadXCF_RW
     IMG_LoadXCF_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadXCF_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 122
+# /usr/include/SDL/SDL_image.h: 121
 if hasattr(_libs['SDL_image'], 'IMG_LoadXPM_RW'):
     IMG_LoadXPM_RW = _libs['SDL_image'].IMG_LoadXPM_RW
     IMG_LoadXPM_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadXPM_RW.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_image.h: 123
+# /usr/include/SDL/SDL_image.h: 122
 if hasattr(_libs['SDL_image'], 'IMG_LoadXV_RW'):
     IMG_LoadXV_RW = _libs['SDL_image'].IMG_LoadXV_RW
     IMG_LoadXV_RW.argtypes = [POINTER(SDL_RWops)]
     IMG_LoadXV_RW.restype = POINTER(SDL_Surface)
 
 # /usr/include/SDL/SDL_image.h: 124
-if hasattr(_libs['SDL_image'], 'IMG_LoadWEBP_RW'):
-    IMG_LoadWEBP_RW = _libs['SDL_image'].IMG_LoadWEBP_RW
-    IMG_LoadWEBP_RW.argtypes = [POINTER(SDL_RWops)]
-    IMG_LoadWEBP_RW.restype = POINTER(SDL_Surface)
-
-# /usr/include/SDL/SDL_image.h: 126
 if hasattr(_libs['SDL_image'], 'IMG_ReadXPMFromArray'):
     IMG_ReadXPMFromArray = _libs['SDL_image'].IMG_ReadXPMFromArray
     IMG_ReadXPMFromArray.argtypes = [POINTER(POINTER(c_char))]
     IMG_ReadXPMFromArray.restype = POINTER(SDL_Surface)
 
-# /usr/include/SDL/SDL_mixer.h: 65
+# /usr/include/SDL/SDL_mixer.h: 66
 if hasattr(_libs['SDL_mixer'], 'Mix_Linked_Version'):
     Mix_Linked_Version = _libs['SDL_mixer'].Mix_Linked_Version
     Mix_Linked_Version.argtypes = []
@@ -4731,8 +4719,6 @@ MIX_INIT_MOD = 2 # /usr/include/SDL/SDL_mixer.h: 74
 MIX_INIT_MP3 = 4 # /usr/include/SDL/SDL_mixer.h: 74
 
 MIX_INIT_OGG = 8 # /usr/include/SDL/SDL_mixer.h: 74
-
-MIX_INIT_FLUIDSYNTH = 16 # /usr/include/SDL/SDL_mixer.h: 74
 
 MIX_InitFlags = enum_anon_50 # /usr/include/SDL/SDL_mixer.h: 74
 
@@ -4777,109 +4763,101 @@ MIX_FADING_IN = (MIX_FADING_OUT + 1) # /usr/include/SDL/SDL_mixer.h: 114
 
 Mix_Fading = enum_anon_51 # /usr/include/SDL/SDL_mixer.h: 114
 
-enum_anon_52 = c_int # /usr/include/SDL/SDL_mixer.h: 127
+enum_anon_52 = c_int # /usr/include/SDL/SDL_mixer.h: 126
 
-MUS_NONE = 0 # /usr/include/SDL/SDL_mixer.h: 127
+MUS_NONE = 0 # /usr/include/SDL/SDL_mixer.h: 126
 
-MUS_CMD = (MUS_NONE + 1) # /usr/include/SDL/SDL_mixer.h: 127
+MUS_CMD = (MUS_NONE + 1) # /usr/include/SDL/SDL_mixer.h: 126
 
-MUS_WAV = (MUS_CMD + 1) # /usr/include/SDL/SDL_mixer.h: 127
+MUS_WAV = (MUS_CMD + 1) # /usr/include/SDL/SDL_mixer.h: 126
 
-MUS_MOD = (MUS_WAV + 1) # /usr/include/SDL/SDL_mixer.h: 127
+MUS_MOD = (MUS_WAV + 1) # /usr/include/SDL/SDL_mixer.h: 126
 
-MUS_MID = (MUS_MOD + 1) # /usr/include/SDL/SDL_mixer.h: 127
+MUS_MID = (MUS_MOD + 1) # /usr/include/SDL/SDL_mixer.h: 126
 
-MUS_OGG = (MUS_MID + 1) # /usr/include/SDL/SDL_mixer.h: 127
+MUS_OGG = (MUS_MID + 1) # /usr/include/SDL/SDL_mixer.h: 126
 
-MUS_MP3 = (MUS_OGG + 1) # /usr/include/SDL/SDL_mixer.h: 127
+MUS_MP3 = (MUS_OGG + 1) # /usr/include/SDL/SDL_mixer.h: 126
 
-MUS_MP3_MAD = (MUS_MP3 + 1) # /usr/include/SDL/SDL_mixer.h: 127
+MUS_MP3_MAD = (MUS_MP3 + 1) # /usr/include/SDL/SDL_mixer.h: 126
 
-MUS_FLAC = (MUS_MP3_MAD + 1) # /usr/include/SDL/SDL_mixer.h: 127
+MUS_FLAC = (MUS_MP3_MAD + 1) # /usr/include/SDL/SDL_mixer.h: 126
 
-MUS_MODPLUG = (MUS_FLAC + 1) # /usr/include/SDL/SDL_mixer.h: 127
+Mix_MusicType = enum_anon_52 # /usr/include/SDL/SDL_mixer.h: 126
 
-Mix_MusicType = enum_anon_52 # /usr/include/SDL/SDL_mixer.h: 127
-
-# /usr/include/SDL/SDL_mixer.h: 130
+# /usr/include/SDL/SDL_mixer.h: 129
 class struct__Mix_Music(Structure):
     pass
 
-Mix_Music = struct__Mix_Music # /usr/include/SDL/SDL_mixer.h: 130
+Mix_Music = struct__Mix_Music # /usr/include/SDL/SDL_mixer.h: 129
 
-# /usr/include/SDL/SDL_mixer.h: 133
+# /usr/include/SDL/SDL_mixer.h: 132
 if hasattr(_libs['SDL_mixer'], 'Mix_OpenAudio'):
     Mix_OpenAudio = _libs['SDL_mixer'].Mix_OpenAudio
     Mix_OpenAudio.argtypes = [c_int, Uint16, c_int, c_int]
     Mix_OpenAudio.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 141
+# /usr/include/SDL/SDL_mixer.h: 140
 if hasattr(_libs['SDL_mixer'], 'Mix_AllocateChannels'):
     Mix_AllocateChannels = _libs['SDL_mixer'].Mix_AllocateChannels
     Mix_AllocateChannels.argtypes = [c_int]
     Mix_AllocateChannels.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 146
+# /usr/include/SDL/SDL_mixer.h: 145
 if hasattr(_libs['SDL_mixer'], 'Mix_QuerySpec'):
     Mix_QuerySpec = _libs['SDL_mixer'].Mix_QuerySpec
     Mix_QuerySpec.argtypes = [POINTER(c_int), POINTER(Uint16), POINTER(c_int)]
     Mix_QuerySpec.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 149
+# /usr/include/SDL/SDL_mixer.h: 148
 if hasattr(_libs['SDL_mixer'], 'Mix_LoadWAV_RW'):
     Mix_LoadWAV_RW = _libs['SDL_mixer'].Mix_LoadWAV_RW
     Mix_LoadWAV_RW.argtypes = [POINTER(SDL_RWops), c_int]
     Mix_LoadWAV_RW.restype = POINTER(Mix_Chunk)
 
-# /usr/include/SDL/SDL_mixer.h: 151
+# /usr/include/SDL/SDL_mixer.h: 150
 if hasattr(_libs['SDL_mixer'], 'Mix_LoadMUS'):
     Mix_LoadMUS = _libs['SDL_mixer'].Mix_LoadMUS
     Mix_LoadMUS.argtypes = [String]
     Mix_LoadMUS.restype = POINTER(Mix_Music)
 
-# /usr/include/SDL/SDL_mixer.h: 155
+# /usr/include/SDL/SDL_mixer.h: 154
 if hasattr(_libs['SDL_mixer'], 'Mix_LoadMUS_RW'):
     Mix_LoadMUS_RW = _libs['SDL_mixer'].Mix_LoadMUS_RW
     Mix_LoadMUS_RW.argtypes = [POINTER(SDL_RWops)]
     Mix_LoadMUS_RW.restype = POINTER(Mix_Music)
 
-# /usr/include/SDL/SDL_mixer.h: 158
-if hasattr(_libs['SDL_mixer'], 'Mix_LoadMUSType_RW'):
-    Mix_LoadMUSType_RW = _libs['SDL_mixer'].Mix_LoadMUSType_RW
-    Mix_LoadMUSType_RW.argtypes = [POINTER(SDL_RWops), Mix_MusicType, c_int]
-    Mix_LoadMUSType_RW.restype = POINTER(Mix_Music)
-
-# /usr/include/SDL/SDL_mixer.h: 161
+# /usr/include/SDL/SDL_mixer.h: 157
 if hasattr(_libs['SDL_mixer'], 'Mix_QuickLoad_WAV'):
     Mix_QuickLoad_WAV = _libs['SDL_mixer'].Mix_QuickLoad_WAV
     Mix_QuickLoad_WAV.argtypes = [POINTER(Uint8)]
     Mix_QuickLoad_WAV.restype = POINTER(Mix_Chunk)
 
-# /usr/include/SDL/SDL_mixer.h: 164
+# /usr/include/SDL/SDL_mixer.h: 160
 if hasattr(_libs['SDL_mixer'], 'Mix_QuickLoad_RAW'):
     Mix_QuickLoad_RAW = _libs['SDL_mixer'].Mix_QuickLoad_RAW
     Mix_QuickLoad_RAW.argtypes = [POINTER(Uint8), Uint32]
     Mix_QuickLoad_RAW.restype = POINTER(Mix_Chunk)
 
-# /usr/include/SDL/SDL_mixer.h: 167
+# /usr/include/SDL/SDL_mixer.h: 163
 if hasattr(_libs['SDL_mixer'], 'Mix_FreeChunk'):
     Mix_FreeChunk = _libs['SDL_mixer'].Mix_FreeChunk
     Mix_FreeChunk.argtypes = [POINTER(Mix_Chunk)]
     Mix_FreeChunk.restype = None
 
-# /usr/include/SDL/SDL_mixer.h: 168
+# /usr/include/SDL/SDL_mixer.h: 164
 if hasattr(_libs['SDL_mixer'], 'Mix_FreeMusic'):
     Mix_FreeMusic = _libs['SDL_mixer'].Mix_FreeMusic
     Mix_FreeMusic.argtypes = [POINTER(Mix_Music)]
     Mix_FreeMusic.restype = None
 
-# /usr/include/SDL/SDL_mixer.h: 189
+# /usr/include/SDL/SDL_mixer.h: 185
 if hasattr(_libs['SDL_mixer'], 'Mix_GetNumChunkDecoders'):
     Mix_GetNumChunkDecoders = _libs['SDL_mixer'].Mix_GetNumChunkDecoders
     Mix_GetNumChunkDecoders.argtypes = []
     Mix_GetNumChunkDecoders.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 190
+# /usr/include/SDL/SDL_mixer.h: 186
 if hasattr(_libs['SDL_mixer'], 'Mix_GetChunkDecoder'):
     Mix_GetChunkDecoder = _libs['SDL_mixer'].Mix_GetChunkDecoder
     Mix_GetChunkDecoder.argtypes = [c_int]
@@ -4889,13 +4867,13 @@ if hasattr(_libs['SDL_mixer'], 'Mix_GetChunkDecoder'):
         Mix_GetChunkDecoder.restype = String
         Mix_GetChunkDecoder.errcheck = ReturnString
 
-# /usr/include/SDL/SDL_mixer.h: 191
+# /usr/include/SDL/SDL_mixer.h: 187
 if hasattr(_libs['SDL_mixer'], 'Mix_GetNumMusicDecoders'):
     Mix_GetNumMusicDecoders = _libs['SDL_mixer'].Mix_GetNumMusicDecoders
     Mix_GetNumMusicDecoders.argtypes = []
     Mix_GetNumMusicDecoders.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 192
+# /usr/include/SDL/SDL_mixer.h: 188
 if hasattr(_libs['SDL_mixer'], 'Mix_GetMusicDecoder'):
     Mix_GetMusicDecoder = _libs['SDL_mixer'].Mix_GetMusicDecoder
     Mix_GetMusicDecoder.argtypes = [c_int]
@@ -4905,345 +4883,323 @@ if hasattr(_libs['SDL_mixer'], 'Mix_GetMusicDecoder'):
         Mix_GetMusicDecoder.restype = String
         Mix_GetMusicDecoder.errcheck = ReturnString
 
-# /usr/include/SDL/SDL_mixer.h: 197
+# /usr/include/SDL/SDL_mixer.h: 193
 if hasattr(_libs['SDL_mixer'], 'Mix_GetMusicType'):
     Mix_GetMusicType = _libs['SDL_mixer'].Mix_GetMusicType
     Mix_GetMusicType.argtypes = [POINTER(Mix_Music)]
     Mix_GetMusicType.restype = Mix_MusicType
 
-# /usr/include/SDL/SDL_mixer.h: 203
+# /usr/include/SDL/SDL_mixer.h: 199
 if hasattr(_libs['SDL_mixer'], 'Mix_SetPostMix'):
     Mix_SetPostMix = _libs['SDL_mixer'].Mix_SetPostMix
     Mix_SetPostMix.argtypes = [CFUNCTYPE(UNCHECKED(None), POINTER(None), POINTER(Uint8), c_int), POINTER(None)]
     Mix_SetPostMix.restype = None
 
-# /usr/include/SDL/SDL_mixer.h: 209
+# /usr/include/SDL/SDL_mixer.h: 205
 if hasattr(_libs['SDL_mixer'], 'Mix_HookMusic'):
     Mix_HookMusic = _libs['SDL_mixer'].Mix_HookMusic
     Mix_HookMusic.argtypes = [CFUNCTYPE(UNCHECKED(None), POINTER(None), POINTER(Uint8), c_int), POINTER(None)]
     Mix_HookMusic.restype = None
 
-# /usr/include/SDL/SDL_mixer.h: 215
+# /usr/include/SDL/SDL_mixer.h: 211
 if hasattr(_libs['SDL_mixer'], 'Mix_HookMusicFinished'):
     Mix_HookMusicFinished = _libs['SDL_mixer'].Mix_HookMusicFinished
     Mix_HookMusicFinished.argtypes = [CFUNCTYPE(UNCHECKED(None), )]
     Mix_HookMusicFinished.restype = None
 
-# /usr/include/SDL/SDL_mixer.h: 218
+# /usr/include/SDL/SDL_mixer.h: 214
 if hasattr(_libs['SDL_mixer'], 'Mix_GetMusicHookData'):
     Mix_GetMusicHookData = _libs['SDL_mixer'].Mix_GetMusicHookData
     Mix_GetMusicHookData.argtypes = []
     Mix_GetMusicHookData.restype = POINTER(None)
 
-# /usr/include/SDL/SDL_mixer.h: 228
+# /usr/include/SDL/SDL_mixer.h: 224
 if hasattr(_libs['SDL_mixer'], 'Mix_ChannelFinished'):
     Mix_ChannelFinished = _libs['SDL_mixer'].Mix_ChannelFinished
     Mix_ChannelFinished.argtypes = [CFUNCTYPE(UNCHECKED(None), c_int)]
     Mix_ChannelFinished.restype = None
 
-Mix_EffectFunc_t = CFUNCTYPE(UNCHECKED(None), c_int, POINTER(None), c_int, POINTER(None)) # /usr/include/SDL/SDL_mixer.h: 252
+Mix_EffectFunc_t = CFUNCTYPE(UNCHECKED(None), c_int, POINTER(None), c_int, POINTER(None)) # /usr/include/SDL/SDL_mixer.h: 248
 
-Mix_EffectDone_t = CFUNCTYPE(UNCHECKED(None), c_int, POINTER(None)) # /usr/include/SDL/SDL_mixer.h: 263
+Mix_EffectDone_t = CFUNCTYPE(UNCHECKED(None), c_int, POINTER(None)) # /usr/include/SDL/SDL_mixer.h: 259
 
-# /usr/include/SDL/SDL_mixer.h: 312
+# /usr/include/SDL/SDL_mixer.h: 308
 if hasattr(_libs['SDL_mixer'], 'Mix_RegisterEffect'):
     Mix_RegisterEffect = _libs['SDL_mixer'].Mix_RegisterEffect
     Mix_RegisterEffect.argtypes = [c_int, Mix_EffectFunc_t, Mix_EffectDone_t, POINTER(None)]
     Mix_RegisterEffect.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 324
+# /usr/include/SDL/SDL_mixer.h: 320
 if hasattr(_libs['SDL_mixer'], 'Mix_UnregisterEffect'):
     Mix_UnregisterEffect = _libs['SDL_mixer'].Mix_UnregisterEffect
     Mix_UnregisterEffect.argtypes = [c_int, Mix_EffectFunc_t]
     Mix_UnregisterEffect.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 338
+# /usr/include/SDL/SDL_mixer.h: 334
 if hasattr(_libs['SDL_mixer'], 'Mix_UnregisterAllEffects'):
     Mix_UnregisterAllEffects = _libs['SDL_mixer'].Mix_UnregisterAllEffects
     Mix_UnregisterAllEffects.argtypes = [c_int]
     Mix_UnregisterAllEffects.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 378
+# /usr/include/SDL/SDL_mixer.h: 374
 if hasattr(_libs['SDL_mixer'], 'Mix_SetPanning'):
     Mix_SetPanning = _libs['SDL_mixer'].Mix_SetPanning
     Mix_SetPanning.argtypes = [c_int, Uint8, Uint8]
     Mix_SetPanning.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 418
+# /usr/include/SDL/SDL_mixer.h: 414
 if hasattr(_libs['SDL_mixer'], 'Mix_SetPosition'):
     Mix_SetPosition = _libs['SDL_mixer'].Mix_SetPosition
     Mix_SetPosition.argtypes = [c_int, Sint16, Uint8]
     Mix_SetPosition.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 448
+# /usr/include/SDL/SDL_mixer.h: 444
 if hasattr(_libs['SDL_mixer'], 'Mix_SetDistance'):
     Mix_SetDistance = _libs['SDL_mixer'].Mix_SetDistance
     Mix_SetDistance.argtypes = [c_int, Uint8]
     Mix_SetDistance.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 495
+# /usr/include/SDL/SDL_mixer.h: 491
 if hasattr(_libs['SDL_mixer'], 'Mix_SetReverseStereo'):
     Mix_SetReverseStereo = _libs['SDL_mixer'].Mix_SetReverseStereo
     Mix_SetReverseStereo.argtypes = [c_int, c_int]
     Mix_SetReverseStereo.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 504
+# /usr/include/SDL/SDL_mixer.h: 500
 if hasattr(_libs['SDL_mixer'], 'Mix_ReserveChannels'):
     Mix_ReserveChannels = _libs['SDL_mixer'].Mix_ReserveChannels
     Mix_ReserveChannels.argtypes = [c_int]
     Mix_ReserveChannels.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 514
+# /usr/include/SDL/SDL_mixer.h: 510
 if hasattr(_libs['SDL_mixer'], 'Mix_GroupChannel'):
     Mix_GroupChannel = _libs['SDL_mixer'].Mix_GroupChannel
     Mix_GroupChannel.argtypes = [c_int, c_int]
     Mix_GroupChannel.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 516
+# /usr/include/SDL/SDL_mixer.h: 512
 if hasattr(_libs['SDL_mixer'], 'Mix_GroupChannels'):
     Mix_GroupChannels = _libs['SDL_mixer'].Mix_GroupChannels
     Mix_GroupChannels.argtypes = [c_int, c_int, c_int]
     Mix_GroupChannels.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 520
+# /usr/include/SDL/SDL_mixer.h: 516
 if hasattr(_libs['SDL_mixer'], 'Mix_GroupAvailable'):
     Mix_GroupAvailable = _libs['SDL_mixer'].Mix_GroupAvailable
     Mix_GroupAvailable.argtypes = [c_int]
     Mix_GroupAvailable.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 524
+# /usr/include/SDL/SDL_mixer.h: 520
 if hasattr(_libs['SDL_mixer'], 'Mix_GroupCount'):
     Mix_GroupCount = _libs['SDL_mixer'].Mix_GroupCount
     Mix_GroupCount.argtypes = [c_int]
     Mix_GroupCount.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 526
+# /usr/include/SDL/SDL_mixer.h: 522
 if hasattr(_libs['SDL_mixer'], 'Mix_GroupOldest'):
     Mix_GroupOldest = _libs['SDL_mixer'].Mix_GroupOldest
     Mix_GroupOldest.argtypes = [c_int]
     Mix_GroupOldest.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 528
+# /usr/include/SDL/SDL_mixer.h: 524
 if hasattr(_libs['SDL_mixer'], 'Mix_GroupNewer'):
     Mix_GroupNewer = _libs['SDL_mixer'].Mix_GroupNewer
     Mix_GroupNewer.argtypes = [c_int]
     Mix_GroupNewer.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 538
+# /usr/include/SDL/SDL_mixer.h: 534
 if hasattr(_libs['SDL_mixer'], 'Mix_PlayChannelTimed'):
     Mix_PlayChannelTimed = _libs['SDL_mixer'].Mix_PlayChannelTimed
     Mix_PlayChannelTimed.argtypes = [c_int, POINTER(Mix_Chunk), c_int, c_int]
     Mix_PlayChannelTimed.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 539
+# /usr/include/SDL/SDL_mixer.h: 535
 if hasattr(_libs['SDL_mixer'], 'Mix_PlayMusic'):
     Mix_PlayMusic = _libs['SDL_mixer'].Mix_PlayMusic
     Mix_PlayMusic.argtypes = [POINTER(Mix_Music), c_int]
     Mix_PlayMusic.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 542
+# /usr/include/SDL/SDL_mixer.h: 538
 if hasattr(_libs['SDL_mixer'], 'Mix_FadeInMusic'):
     Mix_FadeInMusic = _libs['SDL_mixer'].Mix_FadeInMusic
     Mix_FadeInMusic.argtypes = [POINTER(Mix_Music), c_int, c_int]
     Mix_FadeInMusic.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 543
+# /usr/include/SDL/SDL_mixer.h: 539
 if hasattr(_libs['SDL_mixer'], 'Mix_FadeInMusicPos'):
     Mix_FadeInMusicPos = _libs['SDL_mixer'].Mix_FadeInMusicPos
     Mix_FadeInMusicPos.argtypes = [POINTER(Mix_Music), c_int, c_int, c_double]
     Mix_FadeInMusicPos.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 545
+# /usr/include/SDL/SDL_mixer.h: 541
 if hasattr(_libs['SDL_mixer'], 'Mix_FadeInChannelTimed'):
     Mix_FadeInChannelTimed = _libs['SDL_mixer'].Mix_FadeInChannelTimed
     Mix_FadeInChannelTimed.argtypes = [c_int, POINTER(Mix_Chunk), c_int, c_int, c_int]
     Mix_FadeInChannelTimed.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 552
+# /usr/include/SDL/SDL_mixer.h: 548
 if hasattr(_libs['SDL_mixer'], 'Mix_Volume'):
     Mix_Volume = _libs['SDL_mixer'].Mix_Volume
     Mix_Volume.argtypes = [c_int, c_int]
     Mix_Volume.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 553
+# /usr/include/SDL/SDL_mixer.h: 549
 if hasattr(_libs['SDL_mixer'], 'Mix_VolumeChunk'):
     Mix_VolumeChunk = _libs['SDL_mixer'].Mix_VolumeChunk
     Mix_VolumeChunk.argtypes = [POINTER(Mix_Chunk), c_int]
     Mix_VolumeChunk.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 554
+# /usr/include/SDL/SDL_mixer.h: 550
 if hasattr(_libs['SDL_mixer'], 'Mix_VolumeMusic'):
     Mix_VolumeMusic = _libs['SDL_mixer'].Mix_VolumeMusic
     Mix_VolumeMusic.argtypes = [c_int]
     Mix_VolumeMusic.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 557
+# /usr/include/SDL/SDL_mixer.h: 553
 if hasattr(_libs['SDL_mixer'], 'Mix_HaltChannel'):
     Mix_HaltChannel = _libs['SDL_mixer'].Mix_HaltChannel
     Mix_HaltChannel.argtypes = [c_int]
     Mix_HaltChannel.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 558
+# /usr/include/SDL/SDL_mixer.h: 554
 if hasattr(_libs['SDL_mixer'], 'Mix_HaltGroup'):
     Mix_HaltGroup = _libs['SDL_mixer'].Mix_HaltGroup
     Mix_HaltGroup.argtypes = [c_int]
     Mix_HaltGroup.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 559
+# /usr/include/SDL/SDL_mixer.h: 555
 if hasattr(_libs['SDL_mixer'], 'Mix_HaltMusic'):
     Mix_HaltMusic = _libs['SDL_mixer'].Mix_HaltMusic
     Mix_HaltMusic.argtypes = []
     Mix_HaltMusic.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 565
+# /usr/include/SDL/SDL_mixer.h: 561
 if hasattr(_libs['SDL_mixer'], 'Mix_ExpireChannel'):
     Mix_ExpireChannel = _libs['SDL_mixer'].Mix_ExpireChannel
     Mix_ExpireChannel.argtypes = [c_int, c_int]
     Mix_ExpireChannel.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 571
+# /usr/include/SDL/SDL_mixer.h: 567
 if hasattr(_libs['SDL_mixer'], 'Mix_FadeOutChannel'):
     Mix_FadeOutChannel = _libs['SDL_mixer'].Mix_FadeOutChannel
     Mix_FadeOutChannel.argtypes = [c_int, c_int]
     Mix_FadeOutChannel.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 572
+# /usr/include/SDL/SDL_mixer.h: 568
 if hasattr(_libs['SDL_mixer'], 'Mix_FadeOutGroup'):
     Mix_FadeOutGroup = _libs['SDL_mixer'].Mix_FadeOutGroup
     Mix_FadeOutGroup.argtypes = [c_int, c_int]
     Mix_FadeOutGroup.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 573
+# /usr/include/SDL/SDL_mixer.h: 569
 if hasattr(_libs['SDL_mixer'], 'Mix_FadeOutMusic'):
     Mix_FadeOutMusic = _libs['SDL_mixer'].Mix_FadeOutMusic
     Mix_FadeOutMusic.argtypes = [c_int]
     Mix_FadeOutMusic.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 576
+# /usr/include/SDL/SDL_mixer.h: 572
 if hasattr(_libs['SDL_mixer'], 'Mix_FadingMusic'):
     Mix_FadingMusic = _libs['SDL_mixer'].Mix_FadingMusic
     Mix_FadingMusic.argtypes = []
     Mix_FadingMusic.restype = Mix_Fading
 
-# /usr/include/SDL/SDL_mixer.h: 577
+# /usr/include/SDL/SDL_mixer.h: 573
 if hasattr(_libs['SDL_mixer'], 'Mix_FadingChannel'):
     Mix_FadingChannel = _libs['SDL_mixer'].Mix_FadingChannel
     Mix_FadingChannel.argtypes = [c_int]
     Mix_FadingChannel.restype = Mix_Fading
 
-# /usr/include/SDL/SDL_mixer.h: 580
+# /usr/include/SDL/SDL_mixer.h: 576
 if hasattr(_libs['SDL_mixer'], 'Mix_Pause'):
     Mix_Pause = _libs['SDL_mixer'].Mix_Pause
     Mix_Pause.argtypes = [c_int]
     Mix_Pause.restype = None
 
-# /usr/include/SDL/SDL_mixer.h: 581
+# /usr/include/SDL/SDL_mixer.h: 577
 if hasattr(_libs['SDL_mixer'], 'Mix_Resume'):
     Mix_Resume = _libs['SDL_mixer'].Mix_Resume
     Mix_Resume.argtypes = [c_int]
     Mix_Resume.restype = None
 
-# /usr/include/SDL/SDL_mixer.h: 582
+# /usr/include/SDL/SDL_mixer.h: 578
 if hasattr(_libs['SDL_mixer'], 'Mix_Paused'):
     Mix_Paused = _libs['SDL_mixer'].Mix_Paused
     Mix_Paused.argtypes = [c_int]
     Mix_Paused.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 585
+# /usr/include/SDL/SDL_mixer.h: 581
 if hasattr(_libs['SDL_mixer'], 'Mix_PauseMusic'):
     Mix_PauseMusic = _libs['SDL_mixer'].Mix_PauseMusic
     Mix_PauseMusic.argtypes = []
     Mix_PauseMusic.restype = None
 
-# /usr/include/SDL/SDL_mixer.h: 586
+# /usr/include/SDL/SDL_mixer.h: 582
 if hasattr(_libs['SDL_mixer'], 'Mix_ResumeMusic'):
     Mix_ResumeMusic = _libs['SDL_mixer'].Mix_ResumeMusic
     Mix_ResumeMusic.argtypes = []
     Mix_ResumeMusic.restype = None
 
-# /usr/include/SDL/SDL_mixer.h: 587
+# /usr/include/SDL/SDL_mixer.h: 583
 if hasattr(_libs['SDL_mixer'], 'Mix_RewindMusic'):
     Mix_RewindMusic = _libs['SDL_mixer'].Mix_RewindMusic
     Mix_RewindMusic.argtypes = []
     Mix_RewindMusic.restype = None
 
-# /usr/include/SDL/SDL_mixer.h: 588
+# /usr/include/SDL/SDL_mixer.h: 584
 if hasattr(_libs['SDL_mixer'], 'Mix_PausedMusic'):
     Mix_PausedMusic = _libs['SDL_mixer'].Mix_PausedMusic
     Mix_PausedMusic.argtypes = []
     Mix_PausedMusic.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 596
+# /usr/include/SDL/SDL_mixer.h: 592
 if hasattr(_libs['SDL_mixer'], 'Mix_SetMusicPosition'):
     Mix_SetMusicPosition = _libs['SDL_mixer'].Mix_SetMusicPosition
     Mix_SetMusicPosition.argtypes = [c_double]
     Mix_SetMusicPosition.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 601
+# /usr/include/SDL/SDL_mixer.h: 597
 if hasattr(_libs['SDL_mixer'], 'Mix_Playing'):
     Mix_Playing = _libs['SDL_mixer'].Mix_Playing
     Mix_Playing.argtypes = [c_int]
     Mix_Playing.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 602
+# /usr/include/SDL/SDL_mixer.h: 598
 if hasattr(_libs['SDL_mixer'], 'Mix_PlayingMusic'):
     Mix_PlayingMusic = _libs['SDL_mixer'].Mix_PlayingMusic
     Mix_PlayingMusic.argtypes = []
     Mix_PlayingMusic.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 605
+# /usr/include/SDL/SDL_mixer.h: 601
 if hasattr(_libs['SDL_mixer'], 'Mix_SetMusicCMD'):
     Mix_SetMusicCMD = _libs['SDL_mixer'].Mix_SetMusicCMD
     Mix_SetMusicCMD.argtypes = [String]
     Mix_SetMusicCMD.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 608
+# /usr/include/SDL/SDL_mixer.h: 604
 if hasattr(_libs['SDL_mixer'], 'Mix_SetSynchroValue'):
     Mix_SetSynchroValue = _libs['SDL_mixer'].Mix_SetSynchroValue
     Mix_SetSynchroValue.argtypes = [c_int]
     Mix_SetSynchroValue.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 609
+# /usr/include/SDL/SDL_mixer.h: 605
 if hasattr(_libs['SDL_mixer'], 'Mix_GetSynchroValue'):
     Mix_GetSynchroValue = _libs['SDL_mixer'].Mix_GetSynchroValue
     Mix_GetSynchroValue.argtypes = []
     Mix_GetSynchroValue.restype = c_int
 
-# /usr/include/SDL/SDL_mixer.h: 612
-if hasattr(_libs['SDL_mixer'], 'Mix_SetSoundFonts'):
-    Mix_SetSoundFonts = _libs['SDL_mixer'].Mix_SetSoundFonts
-    Mix_SetSoundFonts.argtypes = [String]
-    Mix_SetSoundFonts.restype = c_int
-
-# /usr/include/SDL/SDL_mixer.h: 613
-if hasattr(_libs['SDL_mixer'], 'Mix_GetSoundFonts'):
-    Mix_GetSoundFonts = _libs['SDL_mixer'].Mix_GetSoundFonts
-    Mix_GetSoundFonts.argtypes = []
-    if sizeof(c_int) == sizeof(c_void_p):
-        Mix_GetSoundFonts.restype = ReturnString
-    else:
-        Mix_GetSoundFonts.restype = String
-        Mix_GetSoundFonts.errcheck = ReturnString
-
-# /usr/include/SDL/SDL_mixer.h: 614
-if hasattr(_libs['SDL_mixer'], 'Mix_EachSoundFont'):
-    Mix_EachSoundFont = _libs['SDL_mixer'].Mix_EachSoundFont
-    Mix_EachSoundFont.argtypes = [CFUNCTYPE(UNCHECKED(c_int), String, POINTER(None)), POINTER(None)]
-    Mix_EachSoundFont.restype = c_int
-
-# /usr/include/SDL/SDL_mixer.h: 619
+# /usr/include/SDL/SDL_mixer.h: 610
 if hasattr(_libs['SDL_mixer'], 'Mix_GetChunk'):
     Mix_GetChunk = _libs['SDL_mixer'].Mix_GetChunk
     Mix_GetChunk.argtypes = [c_int]
     Mix_GetChunk.restype = POINTER(Mix_Chunk)
 
-# /usr/include/SDL/SDL_mixer.h: 622
+# /usr/include/SDL/SDL_mixer.h: 613
 if hasattr(_libs['SDL_mixer'], 'Mix_CloseAudio'):
     Mix_CloseAudio = _libs['SDL_mixer'].Mix_CloseAudio
     Mix_CloseAudio.argtypes = []
     Mix_CloseAudio.restype = None
 
-# /usr/include/SDL/SDL_net.h: 59
+# /usr/include/SDL/SDL_net.h: 60
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_Linked_Version'):
         continue
@@ -5252,7 +5208,7 @@ for _lib in _libs.itervalues():
     SDLNet_Linked_Version.restype = POINTER(SDL_version)
     break
 
-# /usr/include/SDL/SDL_net.h: 65
+# /usr/include/SDL/SDL_net.h: 66
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_Init'):
         continue
@@ -5261,7 +5217,7 @@ for _lib in _libs.itervalues():
     SDLNet_Init.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 66
+# /usr/include/SDL/SDL_net.h: 67
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_Quit'):
         continue
@@ -5270,7 +5226,7 @@ for _lib in _libs.itervalues():
     SDLNet_Quit.restype = None
     break
 
-# /usr/include/SDL/SDL_net.h: 75
+# /usr/include/SDL/SDL_net.h: 76
 class struct_anon_53(Structure):
     pass
 
@@ -5283,9 +5239,9 @@ struct_anon_53._fields_ = [
     ('port', Uint16),
 ]
 
-IPaddress = struct_anon_53 # /usr/include/SDL/SDL_net.h: 75
+IPaddress = struct_anon_53 # /usr/include/SDL/SDL_net.h: 76
 
-# /usr/include/SDL/SDL_net.h: 95
+# /usr/include/SDL/SDL_net.h: 93
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_ResolveHost'):
         continue
@@ -5294,7 +5250,7 @@ for _lib in _libs.itervalues():
     SDLNet_ResolveHost.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 102
+# /usr/include/SDL/SDL_net.h: 100
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_ResolveIP'):
         continue
@@ -5308,21 +5264,12 @@ for _lib in _libs.itervalues():
     break
 
 # /usr/include/SDL/SDL_net.h: 107
-for _lib in _libs.itervalues():
-    if not hasattr(_lib, 'SDLNet_GetLocalAddresses'):
-        continue
-    SDLNet_GetLocalAddresses = _lib.SDLNet_GetLocalAddresses
-    SDLNet_GetLocalAddresses.argtypes = [POINTER(IPaddress), c_int]
-    SDLNet_GetLocalAddresses.restype = c_int
-    break
-
-# /usr/include/SDL/SDL_net.h: 113
 class struct__TCPsocket(Structure):
     pass
 
-TCPsocket = POINTER(struct__TCPsocket) # /usr/include/SDL/SDL_net.h: 113
+TCPsocket = POINTER(struct__TCPsocket) # /usr/include/SDL/SDL_net.h: 107
 
-# /usr/include/SDL/SDL_net.h: 123
+# /usr/include/SDL/SDL_net.h: 117
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_TCP_Open'):
         continue
@@ -5331,7 +5278,7 @@ for _lib in _libs.itervalues():
     SDLNet_TCP_Open.restype = TCPsocket
     break
 
-# /usr/include/SDL/SDL_net.h: 128
+# /usr/include/SDL/SDL_net.h: 122
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_TCP_Accept'):
         continue
@@ -5340,7 +5287,7 @@ for _lib in _libs.itervalues():
     SDLNet_TCP_Accept.restype = TCPsocket
     break
 
-# /usr/include/SDL/SDL_net.h: 133
+# /usr/include/SDL/SDL_net.h: 127
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_TCP_GetPeerAddress'):
         continue
@@ -5349,7 +5296,7 @@ for _lib in _libs.itervalues():
     SDLNet_TCP_GetPeerAddress.restype = POINTER(IPaddress)
     break
 
-# /usr/include/SDL/SDL_net.h: 140
+# /usr/include/SDL/SDL_net.h: 134
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_TCP_Send'):
         continue
@@ -5358,7 +5305,7 @@ for _lib in _libs.itervalues():
     SDLNet_TCP_Send.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 149
+# /usr/include/SDL/SDL_net.h: 143
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_TCP_Recv'):
         continue
@@ -5367,7 +5314,7 @@ for _lib in _libs.itervalues():
     SDLNet_TCP_Recv.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 152
+# /usr/include/SDL/SDL_net.h: 146
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_TCP_Close'):
         continue
@@ -5376,13 +5323,13 @@ for _lib in _libs.itervalues():
     SDLNet_TCP_Close.restype = None
     break
 
-# /usr/include/SDL/SDL_net.h: 164
+# /usr/include/SDL/SDL_net.h: 158
 class struct__UDPsocket(Structure):
     pass
 
-UDPsocket = POINTER(struct__UDPsocket) # /usr/include/SDL/SDL_net.h: 164
+UDPsocket = POINTER(struct__UDPsocket) # /usr/include/SDL/SDL_net.h: 158
 
-# /usr/include/SDL/SDL_net.h: 172
+# /usr/include/SDL/SDL_net.h: 166
 class struct_anon_54(Structure):
     pass
 
@@ -5403,9 +5350,9 @@ struct_anon_54._fields_ = [
     ('address', IPaddress),
 ]
 
-UDPpacket = struct_anon_54 # /usr/include/SDL/SDL_net.h: 172
+UDPpacket = struct_anon_54 # /usr/include/SDL/SDL_net.h: 166
 
-# /usr/include/SDL/SDL_net.h: 177
+# /usr/include/SDL/SDL_net.h: 171
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_AllocPacket'):
         continue
@@ -5414,7 +5361,7 @@ for _lib in _libs.itervalues():
     SDLNet_AllocPacket.restype = POINTER(UDPpacket)
     break
 
-# /usr/include/SDL/SDL_net.h: 178
+# /usr/include/SDL/SDL_net.h: 172
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_ResizePacket'):
         continue
@@ -5423,7 +5370,7 @@ for _lib in _libs.itervalues():
     SDLNet_ResizePacket.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 179
+# /usr/include/SDL/SDL_net.h: 173
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_FreePacket'):
         continue
@@ -5432,7 +5379,7 @@ for _lib in _libs.itervalues():
     SDLNet_FreePacket.restype = None
     break
 
-# /usr/include/SDL/SDL_net.h: 186
+# /usr/include/SDL/SDL_net.h: 180
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_AllocPacketV'):
         continue
@@ -5441,7 +5388,7 @@ for _lib in _libs.itervalues():
     SDLNet_AllocPacketV.restype = POINTER(POINTER(UDPpacket))
     break
 
-# /usr/include/SDL/SDL_net.h: 187
+# /usr/include/SDL/SDL_net.h: 181
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_FreePacketV'):
         continue
@@ -5450,7 +5397,7 @@ for _lib in _libs.itervalues():
     SDLNet_FreePacketV.restype = None
     break
 
-# /usr/include/SDL/SDL_net.h: 196
+# /usr/include/SDL/SDL_net.h: 190
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_UDP_Open'):
         continue
@@ -5459,16 +5406,7 @@ for _lib in _libs.itervalues():
     SDLNet_UDP_Open.restype = UDPsocket
     break
 
-# /usr/include/SDL/SDL_net.h: 200
-for _lib in _libs.itervalues():
-    if not hasattr(_lib, 'SDLNet_UDP_SetPacketLoss'):
-        continue
-    SDLNet_UDP_SetPacketLoss = _lib.SDLNet_UDP_SetPacketLoss
-    SDLNet_UDP_SetPacketLoss.argtypes = [UDPsocket, c_int]
-    SDLNet_UDP_SetPacketLoss.restype = None
-    break
-
-# /usr/include/SDL/SDL_net.h: 211
+# /usr/include/SDL/SDL_net.h: 201
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_UDP_Bind'):
         continue
@@ -5477,7 +5415,7 @@ for _lib in _libs.itervalues():
     SDLNet_UDP_Bind.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 214
+# /usr/include/SDL/SDL_net.h: 204
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_UDP_Unbind'):
         continue
@@ -5486,7 +5424,7 @@ for _lib in _libs.itervalues():
     SDLNet_UDP_Unbind.restype = None
     break
 
-# /usr/include/SDL/SDL_net.h: 222
+# /usr/include/SDL/SDL_net.h: 212
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_UDP_GetPeerAddress'):
         continue
@@ -5495,7 +5433,7 @@ for _lib in _libs.itervalues():
     SDLNet_UDP_GetPeerAddress.restype = POINTER(IPaddress)
     break
 
-# /usr/include/SDL/SDL_net.h: 231
+# /usr/include/SDL/SDL_net.h: 221
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_UDP_SendV'):
         continue
@@ -5504,7 +5442,7 @@ for _lib in _libs.itervalues():
     SDLNet_UDP_SendV.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 245
+# /usr/include/SDL/SDL_net.h: 235
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_UDP_Send'):
         continue
@@ -5513,7 +5451,7 @@ for _lib in _libs.itervalues():
     SDLNet_UDP_Send.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 257
+# /usr/include/SDL/SDL_net.h: 247
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_UDP_RecvV'):
         continue
@@ -5522,7 +5460,7 @@ for _lib in _libs.itervalues():
     SDLNet_UDP_RecvV.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 269
+# /usr/include/SDL/SDL_net.h: 259
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_UDP_Recv'):
         continue
@@ -5531,7 +5469,7 @@ for _lib in _libs.itervalues():
     SDLNet_UDP_Recv.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 272
+# /usr/include/SDL/SDL_net.h: 262
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_UDP_Close'):
         continue
@@ -5540,26 +5478,26 @@ for _lib in _libs.itervalues():
     SDLNet_UDP_Close.restype = None
     break
 
-# /usr/include/SDL/SDL_net.h: 279
+# /usr/include/SDL/SDL_net.h: 269
 class struct__SDLNet_SocketSet(Structure):
     pass
 
-SDLNet_SocketSet = POINTER(struct__SDLNet_SocketSet) # /usr/include/SDL/SDL_net.h: 279
+SDLNet_SocketSet = POINTER(struct__SDLNet_SocketSet) # /usr/include/SDL/SDL_net.h: 269
 
-# /usr/include/SDL/SDL_net.h: 282
-class struct__SDLNet_GenericSocket(Structure):
+# /usr/include/SDL/SDL_net.h: 272
+class struct_anon_55(Structure):
     pass
 
-struct__SDLNet_GenericSocket.__slots__ = [
+struct_anon_55.__slots__ = [
     'ready',
 ]
-struct__SDLNet_GenericSocket._fields_ = [
+struct_anon_55._fields_ = [
     ('ready', c_int),
 ]
 
-SDLNet_GenericSocket = POINTER(struct__SDLNet_GenericSocket) # /usr/include/SDL/SDL_net.h: 284
+SDLNet_GenericSocket = POINTER(struct_anon_55) # /usr/include/SDL/SDL_net.h: 274
 
-# /usr/include/SDL/SDL_net.h: 290
+# /usr/include/SDL/SDL_net.h: 280
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_AllocSocketSet'):
         continue
@@ -5568,7 +5506,7 @@ for _lib in _libs.itervalues():
     SDLNet_AllocSocketSet.restype = SDLNet_SocketSet
     break
 
-# /usr/include/SDL/SDL_net.h: 297
+# /usr/include/SDL/SDL_net.h: 287
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_AddSocket'):
         continue
@@ -5577,7 +5515,7 @@ for _lib in _libs.itervalues():
     SDLNet_AddSocket.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 304
+# /usr/include/SDL/SDL_net.h: 294
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_DelSocket'):
         continue
@@ -5586,7 +5524,7 @@ for _lib in _libs.itervalues():
     SDLNet_DelSocket.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 313
+# /usr/include/SDL/SDL_net.h: 303
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_CheckSockets'):
         continue
@@ -5595,7 +5533,7 @@ for _lib in _libs.itervalues():
     SDLNet_CheckSockets.restype = c_int
     break
 
-# /usr/include/SDL/SDL_net.h: 323
+# /usr/include/SDL/SDL_net.h: 313
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_FreeSocketSet'):
         continue
@@ -5604,7 +5542,7 @@ for _lib in _libs.itervalues():
     SDLNet_FreeSocketSet.restype = None
     break
 
-# /usr/include/SDL/SDL_net.h: 331
+# /usr/include/SDL/SDL_net.h: 321
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_Write16'):
         continue
@@ -5613,7 +5551,7 @@ for _lib in _libs.itervalues():
     SDLNet_Write16.restype = None
     break
 
-# /usr/include/SDL/SDL_net.h: 332
+# /usr/include/SDL/SDL_net.h: 322
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_Write32'):
         continue
@@ -5622,7 +5560,7 @@ for _lib in _libs.itervalues():
     SDLNet_Write32.restype = None
     break
 
-# /usr/include/SDL/SDL_net.h: 335
+# /usr/include/SDL/SDL_net.h: 325
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_Read16'):
         continue
@@ -5631,7 +5569,7 @@ for _lib in _libs.itervalues():
     SDLNet_Read16.restype = Uint16
     break
 
-# /usr/include/SDL/SDL_net.h: 336
+# /usr/include/SDL/SDL_net.h: 326
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'SDLNet_Read32'):
         continue
@@ -7691,47 +7629,6 @@ class struct__XDisplay(Structure):
 Display = struct__XDisplay # /usr/include/X11/Xlib.h: 498
 
 # /usr/include/X11/Xlib.h: 582
-class struct_anon_77(Structure):
-    pass
-
-struct_anon_77.__slots__ = [
-    'type',
-    'serial',
-    'send_event',
-    'display',
-    'window',
-    'root',
-    'subwindow',
-    'time',
-    'x',
-    'y',
-    'x_root',
-    'y_root',
-    'state',
-    'keycode',
-    'same_screen',
-]
-struct_anon_77._fields_ = [
-    ('type', c_int),
-    ('serial', c_ulong),
-    ('send_event', c_int),
-    ('display', POINTER(Display)),
-    ('window', Window),
-    ('root', Window),
-    ('subwindow', Window),
-    ('time', Time),
-    ('x', c_int),
-    ('y', c_int),
-    ('x_root', c_int),
-    ('y_root', c_int),
-    ('state', c_uint),
-    ('keycode', c_uint),
-    ('same_screen', c_int),
-]
-
-XKeyEvent = struct_anon_77 # /usr/include/X11/Xlib.h: 582
-
-# /usr/include/X11/Xlib.h: 600
 class struct_anon_78(Structure):
     pass
 
@@ -7749,7 +7646,7 @@ struct_anon_78.__slots__ = [
     'x_root',
     'y_root',
     'state',
-    'button',
+    'keycode',
     'same_screen',
 ]
 struct_anon_78._fields_ = [
@@ -7766,13 +7663,13 @@ struct_anon_78._fields_ = [
     ('x_root', c_int),
     ('y_root', c_int),
     ('state', c_uint),
-    ('button', c_uint),
+    ('keycode', c_uint),
     ('same_screen', c_int),
 ]
 
-XButtonEvent = struct_anon_78 # /usr/include/X11/Xlib.h: 600
+XKeyEvent = struct_anon_78 # /usr/include/X11/Xlib.h: 582
 
-# /usr/include/X11/Xlib.h: 618
+# /usr/include/X11/Xlib.h: 600
 class struct_anon_79(Structure):
     pass
 
@@ -7790,10 +7687,51 @@ struct_anon_79.__slots__ = [
     'x_root',
     'y_root',
     'state',
-    'is_hint',
+    'button',
     'same_screen',
 ]
 struct_anon_79._fields_ = [
+    ('type', c_int),
+    ('serial', c_ulong),
+    ('send_event', c_int),
+    ('display', POINTER(Display)),
+    ('window', Window),
+    ('root', Window),
+    ('subwindow', Window),
+    ('time', Time),
+    ('x', c_int),
+    ('y', c_int),
+    ('x_root', c_int),
+    ('y_root', c_int),
+    ('state', c_uint),
+    ('button', c_uint),
+    ('same_screen', c_int),
+]
+
+XButtonEvent = struct_anon_79 # /usr/include/X11/Xlib.h: 600
+
+# /usr/include/X11/Xlib.h: 618
+class struct_anon_80(Structure):
+    pass
+
+struct_anon_80.__slots__ = [
+    'type',
+    'serial',
+    'send_event',
+    'display',
+    'window',
+    'root',
+    'subwindow',
+    'time',
+    'x',
+    'y',
+    'x_root',
+    'y_root',
+    'state',
+    'is_hint',
+    'same_screen',
+]
+struct_anon_80._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -7811,13 +7749,13 @@ struct_anon_79._fields_ = [
     ('same_screen', c_int),
 ]
 
-XMotionEvent = struct_anon_79 # /usr/include/X11/Xlib.h: 618
+XMotionEvent = struct_anon_80 # /usr/include/X11/Xlib.h: 618
 
 # /usr/include/X11/Xlib.h: 641
-class struct_anon_80(Structure):
+class struct_anon_81(Structure):
     pass
 
-struct_anon_80.__slots__ = [
+struct_anon_81.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -7836,7 +7774,7 @@ struct_anon_80.__slots__ = [
     'focus',
     'state',
 ]
-struct_anon_80._fields_ = [
+struct_anon_81._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -7856,34 +7794,9 @@ struct_anon_80._fields_ = [
     ('state', c_uint),
 ]
 
-XCrossingEvent = struct_anon_80 # /usr/include/X11/Xlib.h: 641
+XCrossingEvent = struct_anon_81 # /usr/include/X11/Xlib.h: 641
 
 # /usr/include/X11/Xlib.h: 659
-class struct_anon_81(Structure):
-    pass
-
-struct_anon_81.__slots__ = [
-    'type',
-    'serial',
-    'send_event',
-    'display',
-    'window',
-    'mode',
-    'detail',
-]
-struct_anon_81._fields_ = [
-    ('type', c_int),
-    ('serial', c_ulong),
-    ('send_event', c_int),
-    ('display', POINTER(Display)),
-    ('window', Window),
-    ('mode', c_int),
-    ('detail', c_int),
-]
-
-XFocusChangeEvent = struct_anon_81 # /usr/include/X11/Xlib.h: 659
-
-# /usr/include/X11/Xlib.h: 671
 class struct_anon_82(Structure):
     pass
 
@@ -7893,7 +7806,8 @@ struct_anon_82.__slots__ = [
     'send_event',
     'display',
     'window',
-    'key_vector',
+    'mode',
+    'detail',
 ]
 struct_anon_82._fields_ = [
     ('type', c_int),
@@ -7901,12 +7815,13 @@ struct_anon_82._fields_ = [
     ('send_event', c_int),
     ('display', POINTER(Display)),
     ('window', Window),
-    ('key_vector', c_char * 32),
+    ('mode', c_int),
+    ('detail', c_int),
 ]
 
-XKeymapEvent = struct_anon_82 # /usr/include/X11/Xlib.h: 671
+XFocusChangeEvent = struct_anon_82 # /usr/include/X11/Xlib.h: 659
 
-# /usr/include/X11/Xlib.h: 682
+# /usr/include/X11/Xlib.h: 671
 class struct_anon_83(Structure):
     pass
 
@@ -7916,13 +7831,36 @@ struct_anon_83.__slots__ = [
     'send_event',
     'display',
     'window',
+    'key_vector',
+]
+struct_anon_83._fields_ = [
+    ('type', c_int),
+    ('serial', c_ulong),
+    ('send_event', c_int),
+    ('display', POINTER(Display)),
+    ('window', Window),
+    ('key_vector', c_char * 32),
+]
+
+XKeymapEvent = struct_anon_83 # /usr/include/X11/Xlib.h: 671
+
+# /usr/include/X11/Xlib.h: 682
+class struct_anon_84(Structure):
+    pass
+
+struct_anon_84.__slots__ = [
+    'type',
+    'serial',
+    'send_event',
+    'display',
+    'window',
     'x',
     'y',
     'width',
     'height',
     'count',
 ]
-struct_anon_83._fields_ = [
+struct_anon_84._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -7935,44 +7873,9 @@ struct_anon_83._fields_ = [
     ('count', c_int),
 ]
 
-XExposeEvent = struct_anon_83 # /usr/include/X11/Xlib.h: 682
+XExposeEvent = struct_anon_84 # /usr/include/X11/Xlib.h: 682
 
 # /usr/include/X11/Xlib.h: 695
-class struct_anon_84(Structure):
-    pass
-
-struct_anon_84.__slots__ = [
-    'type',
-    'serial',
-    'send_event',
-    'display',
-    'drawable',
-    'x',
-    'y',
-    'width',
-    'height',
-    'count',
-    'major_code',
-    'minor_code',
-]
-struct_anon_84._fields_ = [
-    ('type', c_int),
-    ('serial', c_ulong),
-    ('send_event', c_int),
-    ('display', POINTER(Display)),
-    ('drawable', Drawable),
-    ('x', c_int),
-    ('y', c_int),
-    ('width', c_int),
-    ('height', c_int),
-    ('count', c_int),
-    ('major_code', c_int),
-    ('minor_code', c_int),
-]
-
-XGraphicsExposeEvent = struct_anon_84 # /usr/include/X11/Xlib.h: 695
-
-# /usr/include/X11/Xlib.h: 705
 class struct_anon_85(Structure):
     pass
 
@@ -7982,6 +7885,11 @@ struct_anon_85.__slots__ = [
     'send_event',
     'display',
     'drawable',
+    'x',
+    'y',
+    'width',
+    'height',
+    'count',
     'major_code',
     'minor_code',
 ]
@@ -7991,13 +7899,18 @@ struct_anon_85._fields_ = [
     ('send_event', c_int),
     ('display', POINTER(Display)),
     ('drawable', Drawable),
+    ('x', c_int),
+    ('y', c_int),
+    ('width', c_int),
+    ('height', c_int),
+    ('count', c_int),
     ('major_code', c_int),
     ('minor_code', c_int),
 ]
 
-XNoExposeEvent = struct_anon_85 # /usr/include/X11/Xlib.h: 705
+XGraphicsExposeEvent = struct_anon_85 # /usr/include/X11/Xlib.h: 695
 
-# /usr/include/X11/Xlib.h: 714
+# /usr/include/X11/Xlib.h: 705
 class struct_anon_86(Structure):
     pass
 
@@ -8006,10 +7919,35 @@ struct_anon_86.__slots__ = [
     'serial',
     'send_event',
     'display',
+    'drawable',
+    'major_code',
+    'minor_code',
+]
+struct_anon_86._fields_ = [
+    ('type', c_int),
+    ('serial', c_ulong),
+    ('send_event', c_int),
+    ('display', POINTER(Display)),
+    ('drawable', Drawable),
+    ('major_code', c_int),
+    ('minor_code', c_int),
+]
+
+XNoExposeEvent = struct_anon_86 # /usr/include/X11/Xlib.h: 705
+
+# /usr/include/X11/Xlib.h: 714
+class struct_anon_87(Structure):
+    pass
+
+struct_anon_87.__slots__ = [
+    'type',
+    'serial',
+    'send_event',
+    'display',
     'window',
     'state',
 ]
-struct_anon_86._fields_ = [
+struct_anon_87._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8018,13 +7956,13 @@ struct_anon_86._fields_ = [
     ('state', c_int),
 ]
 
-XVisibilityEvent = struct_anon_86 # /usr/include/X11/Xlib.h: 714
+XVisibilityEvent = struct_anon_87 # /usr/include/X11/Xlib.h: 714
 
 # /usr/include/X11/Xlib.h: 727
-class struct_anon_87(Structure):
+class struct_anon_88(Structure):
     pass
 
-struct_anon_87.__slots__ = [
+struct_anon_88.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8038,7 +7976,7 @@ struct_anon_87.__slots__ = [
     'border_width',
     'override_redirect',
 ]
-struct_anon_87._fields_ = [
+struct_anon_88._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8053,32 +7991,9 @@ struct_anon_87._fields_ = [
     ('override_redirect', c_int),
 ]
 
-XCreateWindowEvent = struct_anon_87 # /usr/include/X11/Xlib.h: 727
+XCreateWindowEvent = struct_anon_88 # /usr/include/X11/Xlib.h: 727
 
 # /usr/include/X11/Xlib.h: 736
-class struct_anon_88(Structure):
-    pass
-
-struct_anon_88.__slots__ = [
-    'type',
-    'serial',
-    'send_event',
-    'display',
-    'event',
-    'window',
-]
-struct_anon_88._fields_ = [
-    ('type', c_int),
-    ('serial', c_ulong),
-    ('send_event', c_int),
-    ('display', POINTER(Display)),
-    ('event', Window),
-    ('window', Window),
-]
-
-XDestroyWindowEvent = struct_anon_88 # /usr/include/X11/Xlib.h: 736
-
-# /usr/include/X11/Xlib.h: 746
 class struct_anon_89(Structure):
     pass
 
@@ -8089,7 +8004,6 @@ struct_anon_89.__slots__ = [
     'display',
     'event',
     'window',
-    'from_configure',
 ]
 struct_anon_89._fields_ = [
     ('type', c_int),
@@ -8098,12 +8012,11 @@ struct_anon_89._fields_ = [
     ('display', POINTER(Display)),
     ('event', Window),
     ('window', Window),
-    ('from_configure', c_int),
 ]
 
-XUnmapEvent = struct_anon_89 # /usr/include/X11/Xlib.h: 746
+XDestroyWindowEvent = struct_anon_89 # /usr/include/X11/Xlib.h: 736
 
-# /usr/include/X11/Xlib.h: 756
+# /usr/include/X11/Xlib.h: 746
 class struct_anon_90(Structure):
     pass
 
@@ -8114,9 +8027,34 @@ struct_anon_90.__slots__ = [
     'display',
     'event',
     'window',
-    'override_redirect',
+    'from_configure',
 ]
 struct_anon_90._fields_ = [
+    ('type', c_int),
+    ('serial', c_ulong),
+    ('send_event', c_int),
+    ('display', POINTER(Display)),
+    ('event', Window),
+    ('window', Window),
+    ('from_configure', c_int),
+]
+
+XUnmapEvent = struct_anon_90 # /usr/include/X11/Xlib.h: 746
+
+# /usr/include/X11/Xlib.h: 756
+class struct_anon_91(Structure):
+    pass
+
+struct_anon_91.__slots__ = [
+    'type',
+    'serial',
+    'send_event',
+    'display',
+    'event',
+    'window',
+    'override_redirect',
+]
+struct_anon_91._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8126,13 +8064,13 @@ struct_anon_90._fields_ = [
     ('override_redirect', c_int),
 ]
 
-XMapEvent = struct_anon_90 # /usr/include/X11/Xlib.h: 756
+XMapEvent = struct_anon_91 # /usr/include/X11/Xlib.h: 756
 
 # /usr/include/X11/Xlib.h: 765
-class struct_anon_91(Structure):
+class struct_anon_92(Structure):
     pass
 
-struct_anon_91.__slots__ = [
+struct_anon_92.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8140,7 +8078,7 @@ struct_anon_91.__slots__ = [
     'parent',
     'window',
 ]
-struct_anon_91._fields_ = [
+struct_anon_92._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8149,13 +8087,13 @@ struct_anon_91._fields_ = [
     ('window', Window),
 ]
 
-XMapRequestEvent = struct_anon_91 # /usr/include/X11/Xlib.h: 765
+XMapRequestEvent = struct_anon_92 # /usr/include/X11/Xlib.h: 765
 
 # /usr/include/X11/Xlib.h: 777
-class struct_anon_92(Structure):
+class struct_anon_93(Structure):
     pass
 
-struct_anon_92.__slots__ = [
+struct_anon_93.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8167,7 +8105,7 @@ struct_anon_92.__slots__ = [
     'y',
     'override_redirect',
 ]
-struct_anon_92._fields_ = [
+struct_anon_93._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8180,13 +8118,13 @@ struct_anon_92._fields_ = [
     ('override_redirect', c_int),
 ]
 
-XReparentEvent = struct_anon_92 # /usr/include/X11/Xlib.h: 777
+XReparentEvent = struct_anon_93 # /usr/include/X11/Xlib.h: 777
 
 # /usr/include/X11/Xlib.h: 791
-class struct_anon_93(Structure):
+class struct_anon_94(Structure):
     pass
 
-struct_anon_93.__slots__ = [
+struct_anon_94.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8201,7 +8139,7 @@ struct_anon_93.__slots__ = [
     'above',
     'override_redirect',
 ]
-struct_anon_93._fields_ = [
+struct_anon_94._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8217,13 +8155,13 @@ struct_anon_93._fields_ = [
     ('override_redirect', c_int),
 ]
 
-XConfigureEvent = struct_anon_93 # /usr/include/X11/Xlib.h: 791
+XConfigureEvent = struct_anon_94 # /usr/include/X11/Xlib.h: 791
 
 # /usr/include/X11/Xlib.h: 801
-class struct_anon_94(Structure):
+class struct_anon_95(Structure):
     pass
 
-struct_anon_94.__slots__ = [
+struct_anon_95.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8233,7 +8171,7 @@ struct_anon_94.__slots__ = [
     'x',
     'y',
 ]
-struct_anon_94._fields_ = [
+struct_anon_95._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8244,13 +8182,13 @@ struct_anon_94._fields_ = [
     ('y', c_int),
 ]
 
-XGravityEvent = struct_anon_94 # /usr/include/X11/Xlib.h: 801
+XGravityEvent = struct_anon_95 # /usr/include/X11/Xlib.h: 801
 
 # /usr/include/X11/Xlib.h: 810
-class struct_anon_95(Structure):
+class struct_anon_96(Structure):
     pass
 
-struct_anon_95.__slots__ = [
+struct_anon_96.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8259,7 +8197,7 @@ struct_anon_95.__slots__ = [
     'width',
     'height',
 ]
-struct_anon_95._fields_ = [
+struct_anon_96._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8269,13 +8207,13 @@ struct_anon_95._fields_ = [
     ('height', c_int),
 ]
 
-XResizeRequestEvent = struct_anon_95 # /usr/include/X11/Xlib.h: 810
+XResizeRequestEvent = struct_anon_96 # /usr/include/X11/Xlib.h: 810
 
 # /usr/include/X11/Xlib.h: 825
-class struct_anon_96(Structure):
+class struct_anon_97(Structure):
     pass
 
-struct_anon_96.__slots__ = [
+struct_anon_97.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8291,7 +8229,7 @@ struct_anon_96.__slots__ = [
     'detail',
     'value_mask',
 ]
-struct_anon_96._fields_ = [
+struct_anon_97._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8308,13 +8246,13 @@ struct_anon_96._fields_ = [
     ('value_mask', c_ulong),
 ]
 
-XConfigureRequestEvent = struct_anon_96 # /usr/include/X11/Xlib.h: 825
+XConfigureRequestEvent = struct_anon_97 # /usr/include/X11/Xlib.h: 825
 
 # /usr/include/X11/Xlib.h: 835
-class struct_anon_97(Structure):
+class struct_anon_98(Structure):
     pass
 
-struct_anon_97.__slots__ = [
+struct_anon_98.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8323,7 +8261,7 @@ struct_anon_97.__slots__ = [
     'window',
     'place',
 ]
-struct_anon_97._fields_ = [
+struct_anon_98._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8333,13 +8271,13 @@ struct_anon_97._fields_ = [
     ('place', c_int),
 ]
 
-XCirculateEvent = struct_anon_97 # /usr/include/X11/Xlib.h: 835
+XCirculateEvent = struct_anon_98 # /usr/include/X11/Xlib.h: 835
 
 # /usr/include/X11/Xlib.h: 845
-class struct_anon_98(Structure):
+class struct_anon_99(Structure):
     pass
 
-struct_anon_98.__slots__ = [
+struct_anon_99.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8348,7 +8286,7 @@ struct_anon_98.__slots__ = [
     'window',
     'place',
 ]
-struct_anon_98._fields_ = [
+struct_anon_99._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8358,13 +8296,13 @@ struct_anon_98._fields_ = [
     ('place', c_int),
 ]
 
-XCirculateRequestEvent = struct_anon_98 # /usr/include/X11/Xlib.h: 845
+XCirculateRequestEvent = struct_anon_99 # /usr/include/X11/Xlib.h: 845
 
 # /usr/include/X11/Xlib.h: 856
-class struct_anon_99(Structure):
+class struct_anon_100(Structure):
     pass
 
-struct_anon_99.__slots__ = [
+struct_anon_100.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8374,7 +8312,7 @@ struct_anon_99.__slots__ = [
     'time',
     'state',
 ]
-struct_anon_99._fields_ = [
+struct_anon_100._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8385,13 +8323,13 @@ struct_anon_99._fields_ = [
     ('state', c_int),
 ]
 
-XPropertyEvent = struct_anon_99 # /usr/include/X11/Xlib.h: 856
+XPropertyEvent = struct_anon_100 # /usr/include/X11/Xlib.h: 856
 
 # /usr/include/X11/Xlib.h: 866
-class struct_anon_100(Structure):
+class struct_anon_101(Structure):
     pass
 
-struct_anon_100.__slots__ = [
+struct_anon_101.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8400,7 +8338,7 @@ struct_anon_100.__slots__ = [
     'selection',
     'time',
 ]
-struct_anon_100._fields_ = [
+struct_anon_101._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8410,13 +8348,13 @@ struct_anon_100._fields_ = [
     ('time', Time),
 ]
 
-XSelectionClearEvent = struct_anon_100 # /usr/include/X11/Xlib.h: 866
+XSelectionClearEvent = struct_anon_101 # /usr/include/X11/Xlib.h: 866
 
 # /usr/include/X11/Xlib.h: 879
-class struct_anon_101(Structure):
+class struct_anon_102(Structure):
     pass
 
-struct_anon_101.__slots__ = [
+struct_anon_102.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8428,7 +8366,7 @@ struct_anon_101.__slots__ = [
     'property',
     'time',
 ]
-struct_anon_101._fields_ = [
+struct_anon_102._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8441,13 +8379,13 @@ struct_anon_101._fields_ = [
     ('time', Time),
 ]
 
-XSelectionRequestEvent = struct_anon_101 # /usr/include/X11/Xlib.h: 879
+XSelectionRequestEvent = struct_anon_102 # /usr/include/X11/Xlib.h: 879
 
 # /usr/include/X11/Xlib.h: 891
-class struct_anon_102(Structure):
+class struct_anon_103(Structure):
     pass
 
-struct_anon_102.__slots__ = [
+struct_anon_103.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8458,7 +8396,7 @@ struct_anon_102.__slots__ = [
     'property',
     'time',
 ]
-struct_anon_102._fields_ = [
+struct_anon_103._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8470,13 +8408,13 @@ struct_anon_102._fields_ = [
     ('time', Time),
 ]
 
-XSelectionEvent = struct_anon_102 # /usr/include/X11/Xlib.h: 891
+XSelectionEvent = struct_anon_103 # /usr/include/X11/Xlib.h: 891
 
 # /usr/include/X11/Xlib.h: 906
-class struct_anon_103(Structure):
+class struct_anon_104(Structure):
     pass
 
-struct_anon_103.__slots__ = [
+struct_anon_104.__slots__ = [
     'type',
     'serial',
     'send_event',
@@ -8486,7 +8424,7 @@ struct_anon_103.__slots__ = [
     'new',
     'state',
 ]
-struct_anon_103._fields_ = [
+struct_anon_104._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8497,51 +8435,24 @@ struct_anon_103._fields_ = [
     ('state', c_int),
 ]
 
-XColormapEvent = struct_anon_103 # /usr/include/X11/Xlib.h: 906
+XColormapEvent = struct_anon_104 # /usr/include/X11/Xlib.h: 906
 
 # /usr/include/X11/Xlib.h: 916
-class union_anon_104(Union):
+class union_anon_105(Union):
     pass
 
-union_anon_104.__slots__ = [
+union_anon_105.__slots__ = [
     'b',
     's',
     'l',
 ]
-union_anon_104._fields_ = [
+union_anon_105._fields_ = [
     ('b', c_char * 20),
     ('s', c_short * 10),
     ('l', c_long * 5),
 ]
 
 # /usr/include/X11/Xlib.h: 921
-class struct_anon_105(Structure):
-    pass
-
-struct_anon_105.__slots__ = [
-    'type',
-    'serial',
-    'send_event',
-    'display',
-    'window',
-    'message_type',
-    'format',
-    'data',
-]
-struct_anon_105._fields_ = [
-    ('type', c_int),
-    ('serial', c_ulong),
-    ('send_event', c_int),
-    ('display', POINTER(Display)),
-    ('window', Window),
-    ('message_type', Atom),
-    ('format', c_int),
-    ('data', union_anon_104),
-]
-
-XClientMessageEvent = struct_anon_105 # /usr/include/X11/Xlib.h: 921
-
-# /usr/include/X11/Xlib.h: 933
 class struct_anon_106(Structure):
     pass
 
@@ -8551,11 +8462,38 @@ struct_anon_106.__slots__ = [
     'send_event',
     'display',
     'window',
+    'message_type',
+    'format',
+    'data',
+]
+struct_anon_106._fields_ = [
+    ('type', c_int),
+    ('serial', c_ulong),
+    ('send_event', c_int),
+    ('display', POINTER(Display)),
+    ('window', Window),
+    ('message_type', Atom),
+    ('format', c_int),
+    ('data', union_anon_105),
+]
+
+XClientMessageEvent = struct_anon_106 # /usr/include/X11/Xlib.h: 921
+
+# /usr/include/X11/Xlib.h: 933
+class struct_anon_107(Structure):
+    pass
+
+struct_anon_107.__slots__ = [
+    'type',
+    'serial',
+    'send_event',
+    'display',
+    'window',
     'request',
     'first_keycode',
     'count',
 ]
-struct_anon_106._fields_ = [
+struct_anon_107._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8566,13 +8504,13 @@ struct_anon_106._fields_ = [
     ('count', c_int),
 ]
 
-XMappingEvent = struct_anon_106 # /usr/include/X11/Xlib.h: 933
+XMappingEvent = struct_anon_107 # /usr/include/X11/Xlib.h: 933
 
 # /usr/include/X11/Xlib.h: 943
-class struct_anon_107(Structure):
+class struct_anon_108(Structure):
     pass
 
-struct_anon_107.__slots__ = [
+struct_anon_108.__slots__ = [
     'type',
     'display',
     'resourceid',
@@ -8581,7 +8519,7 @@ struct_anon_107.__slots__ = [
     'request_code',
     'minor_code',
 ]
-struct_anon_107._fields_ = [
+struct_anon_108._fields_ = [
     ('type', c_int),
     ('display', POINTER(Display)),
     ('resourceid', XID),
@@ -8591,30 +8529,9 @@ struct_anon_107._fields_ = [
     ('minor_code', c_ubyte),
 ]
 
-XErrorEvent = struct_anon_107 # /usr/include/X11/Xlib.h: 943
+XErrorEvent = struct_anon_108 # /usr/include/X11/Xlib.h: 943
 
 # /usr/include/X11/Xlib.h: 951
-class struct_anon_108(Structure):
-    pass
-
-struct_anon_108.__slots__ = [
-    'type',
-    'serial',
-    'send_event',
-    'display',
-    'window',
-]
-struct_anon_108._fields_ = [
-    ('type', c_int),
-    ('serial', c_ulong),
-    ('send_event', c_int),
-    ('display', POINTER(Display)),
-    ('window', Window),
-]
-
-XAnyEvent = struct_anon_108 # /usr/include/X11/Xlib.h: 951
-
-# /usr/include/X11/Xlib.h: 967
 class struct_anon_109(Structure):
     pass
 
@@ -8623,21 +8540,19 @@ struct_anon_109.__slots__ = [
     'serial',
     'send_event',
     'display',
-    'extension',
-    'evtype',
+    'window',
 ]
 struct_anon_109._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
     ('display', POINTER(Display)),
-    ('extension', c_int),
-    ('evtype', c_int),
+    ('window', Window),
 ]
 
-XGenericEvent = struct_anon_109 # /usr/include/X11/Xlib.h: 967
+XAnyEvent = struct_anon_109 # /usr/include/X11/Xlib.h: 951
 
-# /usr/include/X11/Xlib.h: 978
+# /usr/include/X11/Xlib.h: 967
 class struct_anon_110(Structure):
     pass
 
@@ -8648,10 +8563,33 @@ struct_anon_110.__slots__ = [
     'display',
     'extension',
     'evtype',
+]
+struct_anon_110._fields_ = [
+    ('type', c_int),
+    ('serial', c_ulong),
+    ('send_event', c_int),
+    ('display', POINTER(Display)),
+    ('extension', c_int),
+    ('evtype', c_int),
+]
+
+XGenericEvent = struct_anon_110 # /usr/include/X11/Xlib.h: 967
+
+# /usr/include/X11/Xlib.h: 978
+class struct_anon_111(Structure):
+    pass
+
+struct_anon_111.__slots__ = [
+    'type',
+    'serial',
+    'send_event',
+    'display',
+    'extension',
+    'evtype',
     'cookie',
     'data',
 ]
-struct_anon_110._fields_ = [
+struct_anon_111._fields_ = [
     ('type', c_int),
     ('serial', c_ulong),
     ('send_event', c_int),
@@ -8662,7 +8600,7 @@ struct_anon_110._fields_ = [
     ('data', POINTER(None)),
 ]
 
-XGenericEventCookie = struct_anon_110 # /usr/include/X11/Xlib.h: 978
+XGenericEventCookie = struct_anon_111 # /usr/include/X11/Xlib.h: 978
 
 # /usr/include/X11/Xlib.h: 1020
 class union__XEvent(Union):
@@ -8745,20 +8683,20 @@ union__XEvent._fields_ = [
 
 XEvent = union__XEvent # /usr/include/X11/Xlib.h: 1020
 
-enum_anon_135 = c_int # /usr/include/SDL/SDL_syswm.h: 69
+enum_anon_136 = c_int # /usr/include/SDL/SDL_syswm.h: 69
 
 SDL_SYSWM_X11 = 0 # /usr/include/SDL/SDL_syswm.h: 69
 
-SDL_SYSWM_TYPE = enum_anon_135 # /usr/include/SDL/SDL_syswm.h: 69
+SDL_SYSWM_TYPE = enum_anon_136 # /usr/include/SDL/SDL_syswm.h: 69
 
 # /usr/include/SDL/SDL_syswm.h: 75
-class union_anon_136(Union):
+class union_anon_137(Union):
     pass
 
-union_anon_136.__slots__ = [
+union_anon_137.__slots__ = [
     'xevent',
 ]
-union_anon_136._fields_ = [
+union_anon_137._fields_ = [
     ('xevent', XEvent),
 ]
 
@@ -8770,14 +8708,14 @@ struct_SDL_SysWMmsg.__slots__ = [
 struct_SDL_SysWMmsg._fields_ = [
     ('version', SDL_version),
     ('subsystem', SDL_SYSWM_TYPE),
-    ('event', union_anon_136),
+    ('event', union_anon_137),
 ]
 
 # /usr/include/SDL/SDL_syswm.h: 88
-class struct_anon_137(Structure):
+class struct_anon_138(Structure):
     pass
 
-struct_anon_137.__slots__ = [
+struct_anon_138.__slots__ = [
     'display',
     'window',
     'lock_func',
@@ -8786,7 +8724,7 @@ struct_anon_137.__slots__ = [
     'wmwindow',
     'gfxdisplay',
 ]
-struct_anon_137._fields_ = [
+struct_anon_138._fields_ = [
     ('display', POINTER(Display)),
     ('window', Window),
     ('lock_func', CFUNCTYPE(UNCHECKED(None), )),
@@ -8797,14 +8735,14 @@ struct_anon_137._fields_ = [
 ]
 
 # /usr/include/SDL/SDL_syswm.h: 87
-class union_anon_138(Union):
+class union_anon_139(Union):
     pass
 
-union_anon_138.__slots__ = [
+union_anon_139.__slots__ = [
     'x11',
 ]
-union_anon_138._fields_ = [
-    ('x11', struct_anon_137),
+union_anon_139._fields_ = [
+    ('x11', struct_anon_138),
 ]
 
 # /usr/include/SDL/SDL_syswm.h: 114
@@ -8819,7 +8757,7 @@ struct_SDL_SysWMinfo.__slots__ = [
 struct_SDL_SysWMinfo._fields_ = [
     ('version', SDL_version),
     ('subsystem', SDL_SYSWM_TYPE),
-    ('info', union_anon_138),
+    ('info', union_anon_139),
 ]
 
 SDL_SysWMinfo = struct_SDL_SysWMinfo # /usr/include/SDL/SDL_syswm.h: 114
@@ -10720,67 +10658,67 @@ try:
 except:
     pass
 
-# /usr/include/SDL/SDL_image.h: 38
+# /usr/include/SDL/SDL_image.h: 39
 try:
     SDL_IMAGE_MAJOR_VERSION = 1
 except:
     pass
 
-# /usr/include/SDL/SDL_image.h: 39
+# /usr/include/SDL/SDL_image.h: 40
 try:
     SDL_IMAGE_MINOR_VERSION = 2
 except:
     pass
 
-# /usr/include/SDL/SDL_image.h: 40
+# /usr/include/SDL/SDL_image.h: 41
 try:
-    SDL_IMAGE_PATCHLEVEL = 12
+    SDL_IMAGE_PATCHLEVEL = 10
 except:
     pass
 
-# /usr/include/SDL/SDL_image.h: 129
+# /usr/include/SDL/SDL_image.h: 127
 try:
     IMG_SetError = SDL_SetError
 except:
     pass
 
-# /usr/include/SDL/SDL_image.h: 130
+# /usr/include/SDL/SDL_image.h: 128
 try:
     IMG_GetError = SDL_GetError
 except:
     pass
 
-# /usr/include/SDL/SDL_mixer.h: 41
+# /usr/include/SDL/SDL_mixer.h: 42
 try:
     SDL_MIXER_MAJOR_VERSION = 1
 except:
     pass
 
-# /usr/include/SDL/SDL_mixer.h: 42
+# /usr/include/SDL/SDL_mixer.h: 43
 try:
     SDL_MIXER_MINOR_VERSION = 2
 except:
     pass
 
-# /usr/include/SDL/SDL_mixer.h: 43
+# /usr/include/SDL/SDL_mixer.h: 44
 try:
-    SDL_MIXER_PATCHLEVEL = 12
-except:
-    pass
-
-# /usr/include/SDL/SDL_mixer.h: 56
-try:
-    MIX_MAJOR_VERSION = SDL_MIXER_MAJOR_VERSION
+    SDL_MIXER_PATCHLEVEL = 11
 except:
     pass
 
 # /usr/include/SDL/SDL_mixer.h: 57
 try:
-    MIX_MINOR_VERSION = SDL_MIXER_MINOR_VERSION
+    MIX_MAJOR_VERSION = SDL_MIXER_MAJOR_VERSION
 except:
     pass
 
 # /usr/include/SDL/SDL_mixer.h: 58
+try:
+    MIX_MINOR_VERSION = SDL_MIXER_MINOR_VERSION
+except:
+    pass
+
+# /usr/include/SDL/SDL_mixer.h: 59
 try:
     MIX_PATCHLEVEL = SDL_MIXER_PATCHLEVEL
 except:
@@ -10816,37 +10754,37 @@ try:
 except:
     pass
 
-# /usr/include/SDL/SDL_mixer.h: 150
+# /usr/include/SDL/SDL_mixer.h: 149
 def Mix_LoadWAV(file):
     return (Mix_LoadWAV_RW ((SDL_RWFromFile (file, 'rb')), 1))
 
-# /usr/include/SDL/SDL_mixer.h: 233
+# /usr/include/SDL/SDL_mixer.h: 229
 try:
     MIX_CHANNEL_POST = (-2)
 except:
     pass
 
-# /usr/include/SDL/SDL_mixer.h: 341
+# /usr/include/SDL/SDL_mixer.h: 337
 try:
     MIX_EFFECTSMAXSPEED = 'MIX_EFFECTSMAXSPEED'
 except:
     pass
 
-# /usr/include/SDL/SDL_mixer.h: 536
+# /usr/include/SDL/SDL_mixer.h: 532
 def Mix_PlayChannel(channel, chunk, loops):
     return (Mix_PlayChannelTimed (channel, chunk, loops, (-1)))
 
-# /usr/include/SDL/SDL_mixer.h: 544
+# /usr/include/SDL/SDL_mixer.h: 540
 def Mix_FadeInChannel(channel, chunk, loops, ms):
     return (Mix_FadeInChannelTimed (channel, chunk, loops, ms, (-1)))
 
-# /usr/include/SDL/SDL_mixer.h: 625
+# /usr/include/SDL/SDL_mixer.h: 616
 try:
     Mix_SetError = SDL_SetError
 except:
     pass
 
-# /usr/include/SDL/SDL_mixer.h: 626
+# /usr/include/SDL/SDL_mixer.h: 617
 try:
     Mix_GetError = SDL_GetError
 except:
@@ -10858,73 +10796,87 @@ try:
 except:
     pass
 
-# /usr/include/SDL/SDL_net.h: 41
+# /usr/include/SDL/SDL_net.h: 42
 try:
     SDL_NET_MAJOR_VERSION = 1
 except:
     pass
 
-# /usr/include/SDL/SDL_net.h: 42
+# /usr/include/SDL/SDL_net.h: 43
 try:
     SDL_NET_MINOR_VERSION = 2
 except:
     pass
 
-# /usr/include/SDL/SDL_net.h: 43
+# /usr/include/SDL/SDL_net.h: 44
 try:
-    SDL_NET_PATCHLEVEL = 8
+    SDL_NET_PATCHLEVEL = 7
 except:
     pass
 
-# /usr/include/SDL/SDL_net.h: 84
+# /usr/include/SDL/SDL_net.h: 85
 try:
     INADDR_ANY = 0
 except:
     pass
 
-# /usr/include/SDL/SDL_net.h: 87
+# /usr/include/SDL/SDL_net.h: 88
 try:
     INADDR_NONE = 4294967295
 except:
     pass
 
-# /usr/include/SDL/SDL_net.h: 90
-try:
-    INADDR_LOOPBACK = 2130706433
-except:
-    pass
-
-# /usr/include/SDL/SDL_net.h: 93
+# /usr/include/SDL/SDL_net.h: 91
 try:
     INADDR_BROADCAST = 4294967295
 except:
     pass
 
-# /usr/include/SDL/SDL_net.h: 160
+# /usr/include/SDL/SDL_net.h: 154
 try:
     SDLNET_MAX_UDPCHANNELS = 32
 except:
     pass
 
-# /usr/include/SDL/SDL_net.h: 162
+# /usr/include/SDL/SDL_net.h: 156
 try:
     SDLNET_MAX_UDPADDRESSES = 4
 except:
     pass
 
-# /usr/include/SDL/SDL_net.h: 343
+# /usr/include/SDL/SDL_net.h: 283
+def SDLNet_TCP_AddSocket(set, sock):
+    return (SDLNet_AddSocket (set, sock))
+
+# /usr/include/SDL/SDL_net.h: 285
+def SDLNet_UDP_AddSocket(set, sock):
+    return (SDLNet_AddSocket (set, sock))
+
+# /usr/include/SDL/SDL_net.h: 290
+def SDLNet_TCP_DelSocket(set, sock):
+    return (SDLNet_DelSocket (set, sock))
+
+# /usr/include/SDL/SDL_net.h: 292
+def SDLNet_UDP_DelSocket(set, sock):
+    return (SDLNet_DelSocket (set, sock))
+
+# /usr/include/SDL/SDL_net.h: 309
+def SDLNet_SocketReady(sock):
+    return ((sock != NULL) and (sock.contents.ready))
+
+# /usr/include/SDL/SDL_net.h: 333
 try:
     SDLNet_SetError = SDL_SetError
 except:
     pass
 
-# /usr/include/SDL/SDL_net.h: 344
+# /usr/include/SDL/SDL_net.h: 334
 try:
     SDLNet_GetError = SDL_GetError
 except:
     pass
 
-# /usr/include/SDL/SDL_net.h: 361
+# /usr/include/SDL/SDL_net.h: 351
 try:
     SDL_DATA_ALIGNED = 0
 except:
@@ -24430,15 +24382,13 @@ SDL_version = struct_SDL_version # /usr/include/SDL/SDL_version.h: 51
 
 Mix_Chunk = struct_Mix_Chunk # /usr/include/SDL/SDL_mixer.h: 107
 
-_Mix_Music = struct__Mix_Music # /usr/include/SDL/SDL_mixer.h: 130
+_Mix_Music = struct__Mix_Music # /usr/include/SDL/SDL_mixer.h: 129
 
-_TCPsocket = struct__TCPsocket # /usr/include/SDL/SDL_net.h: 113
+_TCPsocket = struct__TCPsocket # /usr/include/SDL/SDL_net.h: 107
 
-_UDPsocket = struct__UDPsocket # /usr/include/SDL/SDL_net.h: 164
+_UDPsocket = struct__UDPsocket # /usr/include/SDL/SDL_net.h: 158
 
-_SDLNet_SocketSet = struct__SDLNet_SocketSet # /usr/include/SDL/SDL_net.h: 279
-
-_SDLNet_GenericSocket = struct__SDLNet_GenericSocket # /usr/include/SDL/SDL_net.h: 282
+_SDLNet_SocketSet = struct__SDLNet_SocketSet # /usr/include/SDL/SDL_net.h: 269
 
 SDL_SysWMinfo = struct_SDL_SysWMinfo # /usr/include/SDL/SDL_syswm.h: 114
 
